@@ -1,0 +1,29 @@
+{
+  "model_type": "RandomForest Hotspot Severity Classifier",
+  "training_samples": 22000,
+  "target_balance_severe_pct": 24.75,
+  "feature_importances": {
+    "is_vulnerable_user": 0.3695,
+    "aadt": 0.1529,
+    "speed_limit_mph": 0.1219,
+    "length_km": 0.1089,
+    "is_dark_unlit": 0.0662,
+    "lanes": 0.0536,
+    "is_adverse_weather": 0.0346,
+    "is_wet_surface": 0.0344,
+    "is_weekend": 0.033,
+    "is_night": 0.0251
+  },
+  "features": [
+    "speed_limit_mph",
+    "is_night",
+    "is_weekend",
+    "is_adverse_weather",
+    "is_wet_surface",
+    "is_dark_unlit",
+    "is_vulnerable_user",
+    "lanes",
+    "aadt",
+    "length_km"
+  ]
+}
