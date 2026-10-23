@@ -1,0 +1,315 @@
+table _Measures
+	lineageTag: b9bc8553-aab4-4013-97dd-ad8c9480d9a7
+
+	measure 'Total Crashes' = SUM(Segments[Crashes])
+		formatString: #,0
+		displayFolder: Segments
+		lineageTag: 2fce925d-f7a3-4902-a146-d82256a18c03
+
+	measure 'Network Exposure (MVKM)' = SUM(Segments[Exposure MVKM])
+		formatString: #,0.0
+		displayFolder: Segments
+		lineageTag: ba18418e-d9ab-4274-9b91-4024b1f93f5a
+
+	measure 'Lethal Trap Segments' = COALESCE(CALCULATE(COUNTROWS(Segments), LEFT(Segments[Quadrant], 2) = "Q2"), 0)
+		formatString: #,0
+		displayFolder: Segments
+		lineageTag: 74df3bb7-da9e-4b89-98bc-a0ff8454c7e1
+
+	measure 'Total Fatalities' = SUM(Segments[Fatal])
+		formatString: #,0
+		displayFolder: Segments
+		lineageTag: 664fecbc-262c-4b61-b27d-0a5f0b9e62c6
+
+	measure 'Total Serious Injuries' = SUM(Segments[Serious])
+		formatString: #,0
+		displayFolder: Segments
+		lineageTag: 7428d114-68f6-4f46-a90d-736c82144535
+
+	measure 'Mean Exposure Risk' = AVERAGE(Segments[Risk per MVKM])
+		formatString: 0.0
+		displayFolder: Segments
+		lineageTag: 15fb883c-745b-423e-b234-c128143b5158
+
+	measure 'Segment Count' = COUNTROWS(Segments)
+		formatString: #,0
+		displayFolder: Segments
+		lineageTag: 207b6f92-518f-4f57-bbb4-5705bc297f36
+
+	measure 'Fatality Share %' = DIVIDE([Total Fatalities], [Total Crashes])
+		formatString: 0.0%
+		displayFolder: Segments
+		lineageTag: e39fe1c8-c649-45b2-90d8-a73a681fd00f
+
+	measure 'Mean Exposure per Segment' = AVERAGE(Segments[Exposure MVKM])
+		formatString: #,0.00
+		displayFolder: Segments
+		lineageTag: dc8adc19-a9b4-4109-9233-ea15484fcac1
+
+	measure 'Raw Incidents' = SUM(Hourly[Crashes])
+		formatString: #,0
+		displayFolder: Temporal
+		lineageTag: e4807ca7-da2e-42be-9172-4f4de4e7ca50
+
+	measure 'Raw Incidents Label' = FORMAT([Raw Incidents], "#,0") & " raw incidents"
+		displayFolder: Labels
+		lineageTag: 503aea73-57f6-4a71-b425-fba2957b57d6
+
+	measure 'Exposure Label' = "Million vehicle-km (MVKM)"
+		displayFolder: Labels
+		lineageTag: cea29f6b-0285-41f7-b486-300996d9b56c
+
+	measure 'Trap Label' = "Low count, severe risk"
+		displayFolder: Labels
+		lineageTag: 3403032d-488a-4dfd-b07a-9d8afaf76627
+
+	measure 'Fatal Label' = "Weight: 50x per DfT"
+		displayFolder: Labels
+		lineageTag: 9ca0b720-5951-47f7-9213-cb215029e792
+
+	measure 'Risk Label' = "Severity weight / MVKM"
+		displayFolder: Labels
+		lineageTag: 45d9fd7a-9a09-4620-8489-07c1b3650a98
+
+	measure 'Raw Rank' = MIN(Segments[Raw Count Rank])
+		formatString: #,0
+		displayFolder: Segments
+		lineageTag: a18f3054-e5e9-4798-8263-9d65e4171c64
+
+	measure 'Risk Rank' = MIN(Segments[Exposure Risk Rank])
+		formatString: #,0
+		displayFolder: Segments
+		lineageTag: db654fc6-3fb9-4111-a8c6-159e2f7d0fab
+
+	measure 'Rank Shift' = SUM(Segments[Rank Shift])
+		formatString: +#,0;-#,0;0
+		displayFolder: Segments
+		lineageTag: 2a036fcc-1202-4b66-9144-b9a22d420ece
+
+	measure 'Bench Crashes' = IF(MAX(Segments[Is Benchmark]) = 1, CALCULATE([Total Crashes], REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])))
+		formatString: #,0
+		displayFolder: Benchmark
+		lineageTag: 8c548855-1348-4415-9dba-4a5f248c5cc2
+
+	measure 'Bench Raw Rank' = IF(MAX(Segments[Is Benchmark]) = 1, CALCULATE([Raw Rank], REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])))
+		formatString: #,0
+		displayFolder: Benchmark
+		lineageTag: 659c86b9-be06-47f4-89ca-2fb542079801
+
+	measure 'Bench Exposure' = IF(MAX(Segments[Is Benchmark]) = 1, CALCULATE([Network Exposure (MVKM)], REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])))
+		formatString: #,0.00
+		displayFolder: Benchmark
+		lineageTag: 7858120b-28ac-4e41-9af8-ce86b6865084
+
+	measure 'Bench Risk' = IF(MAX(Segments[Is Benchmark]) = 1, CALCULATE([Mean Exposure Risk], REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])))
+		formatString: 0.00
+		displayFolder: Benchmark
+		lineageTag: e85e7353-dbdc-4979-968b-9859d11ef1f8
+
+	measure 'Bench Risk Rank' = IF(MAX(Segments[Is Benchmark]) = 1, CALCULATE([Risk Rank], REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])))
+		formatString: #,0
+		displayFolder: Benchmark
+		lineageTag: f39ad1e7-0122-45a7-88f6-0d35a71359ee
+
+	measure 'Bench AADT' = IF(MAX(Segments[Is Benchmark]) = 1, CALCULATE(SUM(Segments[AADT]), REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])))
+		formatString: #,0
+		displayFolder: Benchmark
+		lineageTag: 1fd603d2-0979-49df-96e6-d2fff1c3d835
+
+	measure 'Benchmark Headline' = VAR tc = CALCULATE([Total Crashes], Segments[Benchmark Role] = "Hidden high risk", REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])) VAR sc = CALCULATE([Total Crashes], Segments[Benchmark Role] = "High count, ranks safe", REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])) VAR tr = CALCULATE([Mean Exposure Risk], Segments[Benchmark Role] = "Hidden high risk", REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])) VAR sr = CALCULATE([Mean Exposure Risk], Segments[Benchmark Role] = "High count, ranks safe", REMOVEFILTERS(Segments[Road Class]), REMOVEFILTERS(Segments[Suppression])) RETURN IF(HASONEVALUE('StudyContext'[Study Context]), FORMAT(DIVIDE(tc, sc), "0.00") & "x the crashes  ·  " & FORMAT(DIVIDE(tr, sr), "0.0") & "x the risk", "Select one study context")
+		displayFolder: Benchmark
+		lineageTag: 8c6dce2a-5ea9-46ba-8bab-eab572b22710
+
+	measure 'Hourly Crashes' = SUM(Hourly[Crashes])
+		formatString: #,0
+		displayFolder: Temporal
+		lineageTag: aa163230-4062-43a6-86f8-bd9037d2e73e
+
+	measure 'Hourly Fatality Rate' = DIVIDE(SUM(Hourly[Fatal]), SUM(Hourly[Crashes]))
+		formatString: 0.0%
+		displayFolder: Temporal
+		lineageTag: 5e2c23fb-cb24-4bdf-a726-0b7772789d7e
+
+	measure 'Night Fatality Rate' = CALCULATE([Hourly Fatality Rate], Hourly[Hour] < 6 || Hourly[Hour] > 19)
+		formatString: 0.0%
+		displayFolder: Temporal
+		lineageTag: 27babff5-d2cc-4376-b41a-ea452d0be6f8
+
+	measure 'Day Fatality Rate' = CALCULATE([Hourly Fatality Rate], Hourly[Hour] >= 6 && Hourly[Hour] <= 19)
+		formatString: 0.0%
+		displayFolder: Temporal
+		lineageTag: 7e201c1a-97fc-4190-a26b-7e2610b33dfe
+
+	measure 'Night vs Day Label' = "vs " & FORMAT([Day Fatality Rate], "0.0%") & " by day (06:00-19:59)"
+		displayFolder: Labels
+		lineageTag: d40f3a5f-95db-4744-9b3e-82433e17e316
+
+	measure 'Peak Volume Hour' = VAR t = TOPN(1, VALUES(Hourly[Hour]), [Hourly Crashes], DESC) RETURN FORMAT(MAXX(t, Hourly[Hour]), "00") & ":00"
+		displayFolder: Temporal
+		lineageTag: d3400945-80fc-4733-9459-bd79955e8a85
+
+	measure 'Peak Volume Label' = VAR t = TOPN(1, VALUES(Hourly[Hour]), [Hourly Crashes], DESC) RETURN FORMAT(MAXX(t, [Hourly Crashes]), "#,0") & " crashes in that hour"
+		displayFolder: Labels
+		lineageTag: b2c8843f-8dba-4895-9764-ade2b52004e5
+
+	measure 'Most Lethal Hour' = VAR t = TOPN(1, VALUES(Hourly[Hour]), [Hourly Fatality Rate], DESC) RETURN FORMAT(MAXX(t, Hourly[Hour]), "00") & ":00"
+		displayFolder: Temporal
+		lineageTag: ea71accc-f2c8-425a-9055-ad6d8dd58ae3
+
+	measure 'Most Lethal Label' = VAR t = TOPN(1, VALUES(Hourly[Hour]), [Hourly Fatality Rate], DESC) RETURN "fatality share " & FORMAT(MAXX(t, [Hourly Fatality Rate]), "0.0%")
+		displayFolder: Labels
+		lineageTag: 32370321-6790-4508-b6f6-3bd574c78d6f
+
+	measure 'VRU Share' = DIVIDE(SUM(Hourly[VRU Crashes]), SUM(Hourly[Crashes]))
+		formatString: 0%
+		displayFolder: Temporal
+		lineageTag: c6f617de-9c1a-42a0-9ac8-3c1e35d55887
+
+	measure 'VRU Label' = "two-wheelers, cyclists & pedestrians"
+		displayFolder: Labels
+		lineageTag: 4ac72be5-1973-4f62-9d8e-f7fab9c742cf
+
+	measure 'Severe Outcome Rate' = DIVIDE(SUM(Heatmap[Fatal]) + SUM(Heatmap[Serious]), SUM(Heatmap[Crashes]))
+		formatString: 0%
+		displayFolder: Temporal
+		lineageTag: ede5b8e6-40da-457f-acf1-933df11b743d
+
+	measure 'Heatmap Colour' = VAR v = [Severe Outcome Rate] VAR hmGrid = ALLSELECTED(Heatmap[Day], Heatmap[Day Order], Heatmap[Hour]) VAR mn = MINX(hmGrid, [Severe Outcome Rate]) VAR mx = MAXX(hmGrid, [Severe Outcome Rate]) VAR t = DIVIDE(v - mn, mx - mn) RETURN IF(ISBLANK(v), BLANK(), SWITCH(TRUE(), t < 0.15, "#1B0C41", t < 0.3, "#4A0C6B", t < 0.45, "#781C6D", t < 0.6, "#A52C60", t < 0.75, "#CF4446", t < 0.9, "#ED6925", "#FBB61A"))
+		displayFolder: Temporal
+		lineageTag: 3dc0374f-722e-4eb3-b6cb-152e45472871
+
+	measure 'Env Crashes' = SUM(Environment[Crashes])
+		formatString: #,0
+		displayFolder: Conditions
+		lineageTag: e52c10eb-9a84-4828-9bbf-30028b581618
+
+	measure 'Severe Outcome %' = DIVIDE(SUM(Environment[Fatal]) + SUM(Environment[Serious]), SUM(Environment[Crashes]))
+		formatString: 0.0%
+		displayFolder: Conditions
+		lineageTag: dfc8e45e-ad70-4733-868c-991a7ae01543
+
+	measure 'Env Fatality Rate' = DIVIDE(SUM(Environment[Fatal]), SUM(Environment[Crashes]))
+		formatString: 0.0%
+		displayFolder: Conditions
+		lineageTag: 4e74639b-7e94-4c8b-bdf7-f6766db06f71
+
+	measure 'Env Mean Severity Weight' = DIVIDE(SUMX(Environment, Environment[Mean Severity Weight] * Environment[Crashes]), SUM(Environment[Crashes]))
+		formatString: 0.00
+		displayFolder: Conditions
+		lineageTag: 51e8a6e9-bcfc-4d83-b433-60cde383f073
+
+	measure 'Vehicle Severe Rate' = DIVIDE(SUM(Vehicle[Fatal]) + SUM(Vehicle[Serious]), SUM(Vehicle[Crashes]))
+		formatString: 0.0%
+		displayFolder: Conditions
+		lineageTag: df5aa402-712f-48d7-8175-70056155183b
+
+	measure 'Conditions Note' = IF(SELECTEDVALUE(StudyContext[Study Context]) = "India Bengaluru Corridors", "The Bengaluru feed has no weather, surface or lighting fields, so the environmental charts are UK-only. The vehicle chart below shows corridor types.", "Vehicle chart groups UK crashes by posted speed limit. Switch Study Context to see Bengaluru corridor types.")
+		displayFolder: Labels
+		lineageTag: 15de0e25-825f-412f-a6f9-f483f4e63f0f
+
+	measure 'UK Map X' = CALCULATE(AVERAGE(Segments[Mid Lon]), KEEPFILTERS(Segments[Study Context] = "UK STATS19 Network"))
+		formatString: 0.0000
+		displayFolder: Map
+		lineageTag: 27071ffb-4e09-475e-bf56-832630d76e62
+
+	measure 'UK Map Y' = CALCULATE(AVERAGE(Segments[Map Y]), KEEPFILTERS(Segments[Study Context] = "UK STATS19 Network"))
+		formatString: 0.000000
+		displayFolder: Map
+		lineageTag: 977307cd-7322-4473-af74-d5d9a4051f59
+
+	measure 'UK Map Risk' = CALCULATE([Mean Exposure Risk], KEEPFILTERS(Segments[Study Context] = "UK STATS19 Network"))
+		formatString: 0.00
+		displayFolder: Map
+		lineageTag: 082408ac-2201-4e33-b6fc-b15e2f142d84
+
+	measure 'India Map X' = CALCULATE(AVERAGE(Segments[Mid Lon]), KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: 0.0000
+		displayFolder: Map
+		lineageTag: d9b5037c-3dcd-4ebe-a85e-98dcc0f25eca
+
+	measure 'India Map Y' = CALCULATE(AVERAGE(Segments[Map Y]), KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: 0.000000
+		displayFolder: Map
+		lineageTag: ab8327a5-c94f-4c6f-8856-c271d5b7e096
+
+	measure 'India Map Risk' = CALCULATE([Mean Exposure Risk], KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: 0.00
+		displayFolder: Map
+		lineageTag: 34578b77-4775-4849-a8f5-476959eeff8b
+
+	measure 'India Risk' = CALCULATE([Mean Exposure Risk], KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: 0.00
+		displayFolder: India
+		lineageTag: 3166f7ce-1c47-4a3c-b60f-e9f76d813514
+
+	measure 'India AADT' = CALCULATE(SUM(Segments[AADT]), KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: #,0
+		displayFolder: India
+		lineageTag: 0fa9a96f-2135-4584-9c49-15a25b9e1dae
+
+	measure 'India Length km' = CALCULATE(SUM(Segments[Length km]), KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: 0.0
+		displayFolder: India
+		lineageTag: 6b419e65-357f-4093-952e-756f212ed292
+
+	measure 'India Two-Wheeler Share' = CALCULATE(AVERAGE(Segments[Two-Wheeler Share]), KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: 0%
+		displayFolder: India
+		lineageTag: b26cabb3-0642-44df-b013-d18b854d2104
+
+	measure 'India Crashes' = CALCULATE([Total Crashes], KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: #,0
+		displayFolder: India
+		lineageTag: 2e89a7e0-5318-4e89-ad36-02958cef2636
+
+	measure 'India Fatalities' = CALCULATE([Total Fatalities], KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: #,0
+		displayFolder: India
+		lineageTag: 1917d4d7-b73d-40ee-882f-8ca1e35752ad
+
+	measure 'India VRU Crashes' = CALCULATE(SUM(Segments[VRU Crashes]), KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: #,0
+		displayFolder: India
+		lineageTag: 6980b280-ca16-48f5-91c0-09857454767a
+
+	measure 'India Exposure' = CALCULATE([Network Exposure (MVKM)], KEEPFILTERS(Segments[Study Context] = "India Bengaluru Corridors"))
+		formatString: #,0.00
+		displayFolder: India
+		lineageTag: 3094b03a-8857-4c2c-abaa-ef40a4185374
+
+	measure 'Feature Importance' = SUM(Features[Importance])
+		formatString: 0.0000
+		displayFolder: ML
+		lineageTag: c0c6ca17-817e-42fb-b72e-9c2c434c63e4
+
+	measure 'Simulated Severe Probability' = VAR s = SELECTEDVALUE(SimSpeed[Speed Limit (mph)], 60) VAR night = SELECTEDVALUE(SimTime[Time of Day], "Daylight") = "Dark Night" VAR unlit = SELECTEDVALUE(SimLighting[Lighting Infrastructure], "Lit by Streetlights") = "Unlit (Zero Lighting)" VAR w = SELECTEDVALUE(SimWeather[Weather Condition], "Clear / Fine") VAR vru = SELECTEDVALUE(SimRoadUser[Road User], "Vulnerable (Motorcycle / Bicycle)") = "Vulnerable (Motorcycle / Bicycle)" VAR r = 0.08 + IF(s >= 60, 0.22, IF(s >= 40, 0.10, 0)) + IF(night, 0.15, 0) + IF(unlit, 0.25, 0) + IF(CONTAINSSTRING(w, "Rain"), 0.10, IF(CONTAINSSTRING(w, "Fog"), 0.18, 0)) + IF(vru, 0.20, 0) RETURN MIN(0.96, MAX(0.04, r))
+		formatString: 0.0%
+		displayFolder: ML
+		lineageTag: ae043042-158b-462a-b3d9-a6e8a037de70
+
+	measure 'Simulated vs Network' = VAR d = [Simulated Severe Probability] - 0.25 RETURN FORMAT(d, "+0.0%;-0.0%") & " vs network average (25%)"
+		displayFolder: ML
+		lineageTag: 4e4fd242-f98f-4f89-a5f0-0d4099b10d31
+
+	measure 'Simulated Rating' = VAR p = [Simulated Severe Probability] RETURN SWITCH(TRUE(), p > 0.5, "HIGH RISK: immediate engineering intervention. Install LED street lighting, automated speed cameras and anti-skid high-friction surfacing.", p > 0.25, "MODERATE RISK: add advisory electronic speed signs and reflective road studs.", "LOW RISK: within tolerable network safety thresholds.")
+		displayFolder: ML
+		lineageTag: bf036d40-2e7f-4591-b98b-671807884a44
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 5aeb66ec-b645-41d1-8e24-0c10d54cf12a
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

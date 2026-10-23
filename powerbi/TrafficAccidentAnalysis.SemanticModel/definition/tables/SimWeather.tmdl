@@ -1,0 +1,33 @@
+table SimWeather
+	lineageTag: d79a8885-4681-42b2-8b04-020a90003fc6
+
+	column 'Weather Condition'
+		dataType: string
+		lineageTag: ada732c4-9920-490e-a0f2-945cd311cbc7
+		summarizeBy: none
+		sortByColumn: 'Weather Order'
+		sourceColumn: Weather Condition
+
+		annotation SummarizationSetBy = User
+
+	column 'Weather Order'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: 3060839e-3e3c-431f-8243-f776953a1ce8
+		summarizeBy: none
+		sourceColumn: Weather Order
+
+		annotation SummarizationSetBy = User
+
+	partition SimWeather = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "SimWeather.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Weather Condition", type text}, {"Weather Order", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

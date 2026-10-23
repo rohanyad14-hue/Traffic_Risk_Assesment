@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "p1Core",
+    "p2When",
+    "p3Where",
+    "p4Conditions",
+    "p5ML",
+    "p6India",
+    "p7Pipeline"
+  ],
+  "activePageName": "p1Core"
+}

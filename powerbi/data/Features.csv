@@ -1,0 +1,11 @@
+Feature,Importance
+Is Vulnerable User,0.3695
+AADT,0.1529
+Speed Limit (mph),0.1219
+Length Km,0.1089
+Is Dark Unlit,0.0662
+Lanes,0.0536
+Is Adverse Weather,0.0346
+Is Wet Surface,0.0344
+Is Weekend,0.033
+Is Night,0.0251

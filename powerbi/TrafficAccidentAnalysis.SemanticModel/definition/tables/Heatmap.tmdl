@@ -1,0 +1,94 @@
+table Heatmap
+	lineageTag: 19a8b1f6-83e7-43c7-9a50-2d6618b4f983
+
+	column 'Study Context'
+		dataType: string
+		lineageTag: 32431cdb-0a79-4724-a267-94d84935b4ee
+		summarizeBy: none
+		sourceColumn: Study Context
+
+		annotation SummarizationSetBy = User
+
+	column Day
+		dataType: string
+		lineageTag: 4e9eba24-3b36-474b-8b22-52b45d53cf64
+		summarizeBy: none
+		sortByColumn: 'Day Order'
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = User
+
+	column 'Day Order'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: 23a9b5d8-6bc7-4e62-82b4-4dfbcfdbbd4c
+		summarizeBy: none
+		sourceColumn: Day Order
+
+		annotation SummarizationSetBy = User
+
+	column Hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 3520ab84-84f0-411e-a825-dbd99ebfd782
+		summarizeBy: none
+		sourceColumn: Hour
+
+		annotation SummarizationSetBy = User
+
+	column Crashes
+		dataType: int64
+		formatString: #,0
+		lineageTag: af9a15ef-fd22-495c-a30e-e2edd354df77
+		summarizeBy: none
+		sourceColumn: Crashes
+
+		annotation SummarizationSetBy = User
+
+	column Fatal
+		dataType: int64
+		formatString: #,0
+		lineageTag: fa51a6c2-541b-48b2-b596-7e6be1666ad0
+		summarizeBy: none
+		sourceColumn: Fatal
+
+		annotation SummarizationSetBy = User
+
+	column Serious
+		dataType: int64
+		formatString: #,0
+		lineageTag: e96c2d1f-e735-40c1-b1bd-3f99485f48d7
+		summarizeBy: none
+		sourceColumn: Serious
+
+		annotation SummarizationSetBy = User
+
+	column Slight
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3f921e20-e5c9-4704-978a-0e6973ecdc87
+		summarizeBy: none
+		sourceColumn: Slight
+
+		annotation SummarizationSetBy = User
+
+	column 'Avg Severity Weight'
+		dataType: double
+		lineageTag: 0d0c02d1-9df0-46b0-9a06-c196e4f0d8c9
+		summarizeBy: none
+		sourceColumn: Avg Severity Weight
+
+		annotation SummarizationSetBy = User
+
+	partition Heatmap = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Heatmap.csv"),[Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Study Context", type text}, {"Day", type text}, {"Day Order", Int64.Type}, {"Hour", Int64.Type}, {"Crashes", Int64.Type}, {"Fatal", Int64.Type}, {"Serious", Int64.Type}, {"Slight", Int64.Type}, {"Avg Severity Weight", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

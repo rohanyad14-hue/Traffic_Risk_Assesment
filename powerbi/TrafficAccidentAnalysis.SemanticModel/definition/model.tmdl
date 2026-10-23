@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DataFolder", "StudyContext", "Segments", "Hourly", "Heatmap", "Environment", "Vehicle", "Features", "SimSpeed", "SimTime", "SimLighting", "SimWeather", "SimRoadUser", "_Measures"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table StudyContext
+ref table Segments
+ref table Hourly
+ref table Heatmap
+ref table Environment
+ref table Vehicle
+ref table Features
+ref table SimSpeed
+ref table SimTime
+ref table SimLighting
+ref table SimWeather
+ref table SimRoadUser
+ref table _Measures
+
+ref cultureInfo en-US

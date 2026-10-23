@@ -1,0 +1,67 @@
+Study Context,Vehicle Mode,Speed Limit or Corridor,Group Order,Crashes,Fatal,Serious
+UK STATS19 Network,Bus / Coach,20 mph,20,54,0,10
+UK STATS19 Network,Bus / Coach,30 mph,30,169,3,27
+UK STATS19 Network,Bus / Coach,40 mph,40,9,2,1
+UK STATS19 Network,Bus / Coach,50 mph,50,228,6,35
+UK STATS19 Network,Bus / Coach,60 mph,60,2,0,0
+UK STATS19 Network,Bus / Coach,70 mph,70,441,19,93
+UK STATS19 Network,Car,20 mph,20,923,17,119
+UK STATS19 Network,Car,30 mph,30,2482,38,369
+UK STATS19 Network,Car,40 mph,40,94,2,10
+UK STATS19 Network,Car,50 mph,50,3363,57,510
+UK STATS19 Network,Car,60 mph,60,49,10,12
+UK STATS19 Network,Car,70 mph,70,6762,286,1434
+UK STATS19 Network,HGV / Heavy Truck,20 mph,20,75,3,9
+UK STATS19 Network,HGV / Heavy Truck,30 mph,30,182,1,24
+UK STATS19 Network,HGV / Heavy Truck,40 mph,40,5,1,0
+UK STATS19 Network,HGV / Heavy Truck,50 mph,50,281,6,51
+UK STATS19 Network,HGV / Heavy Truck,60 mph,60,2,0,0
+UK STATS19 Network,HGV / Heavy Truck,70 mph,70,559,20,131
+UK STATS19 Network,Motorcycle / Two-Wheeler,20 mph,20,221,13,70
+UK STATS19 Network,Motorcycle / Two-Wheeler,30 mph,30,619,27,186
+UK STATS19 Network,Motorcycle / Two-Wheeler,40 mph,40,24,2,8
+UK STATS19 Network,Motorcycle / Two-Wheeler,50 mph,50,910,47,280
+UK STATS19 Network,Motorcycle / Two-Wheeler,60 mph,60,9,3,5
+UK STATS19 Network,Motorcycle / Two-Wheeler,70 mph,70,1689,200,713
+UK STATS19 Network,Pedal Cycle,20 mph,20,43,1,4
+UK STATS19 Network,Pedal Cycle,30 mph,30,103,1,10
+UK STATS19 Network,Pedal Cycle,40 mph,40,4,0,0
+UK STATS19 Network,Pedal Cycle,50 mph,50,148,2,19
+UK STATS19 Network,Pedal Cycle,60 mph,60,2,0,0
+UK STATS19 Network,Pedal Cycle,70 mph,70,358,11,78
+UK STATS19 Network,Van / Light Goods,20 mph,20,156,3,22
+UK STATS19 Network,Van / Light Goods,30 mph,30,373,7,48
+UK STATS19 Network,Van / Light Goods,40 mph,40,17,0,2
+UK STATS19 Network,Van / Light Goods,50 mph,50,594,10,83
+UK STATS19 Network,Van / Light Goods,60 mph,60,3,0,1
+UK STATS19 Network,Van / Light Goods,70 mph,70,1047,39,245
+India Bengaluru Corridors,Auto-Rickshaw,Elevated Expressway,101,60,2,19
+India Bengaluru Corridors,Auto-Rickshaw,Mixed Arterial,102,64,0,18
+India Bengaluru Corridors,Auto-Rickshaw,Semi-Urban Bottleneck,103,62,1,13
+India Bengaluru Corridors,Auto-Rickshaw,Two-Lane National Highway,104,57,5,14
+India Bengaluru Corridors,Auto-Rickshaw,Urban Major Arterial,105,58,1,17
+India Bengaluru Corridors,Bus / BMTC,Elevated Expressway,101,25,0,9
+India Bengaluru Corridors,Bus / BMTC,Mixed Arterial,102,14,0,3
+India Bengaluru Corridors,Bus / BMTC,Semi-Urban Bottleneck,103,24,2,5
+India Bengaluru Corridors,Bus / BMTC,Two-Lane National Highway,104,30,3,12
+India Bengaluru Corridors,Bus / BMTC,Urban Major Arterial,105,24,1,7
+India Bengaluru Corridors,Car,Elevated Expressway,101,81,2,20
+India Bengaluru Corridors,Car,Mixed Arterial,102,97,1,15
+India Bengaluru Corridors,Car,Semi-Urban Bottleneck,103,95,2,27
+India Bengaluru Corridors,Car,Two-Lane National Highway,104,90,3,26
+India Bengaluru Corridors,Car,Urban Major Arterial,105,90,1,20
+India Bengaluru Corridors,Pedestrian,Elevated Expressway,101,15,2,2
+India Bengaluru Corridors,Pedestrian,Mixed Arterial,102,12,0,5
+India Bengaluru Corridors,Pedestrian,Semi-Urban Bottleneck,103,15,1,1
+India Bengaluru Corridors,Pedestrian,Two-Lane National Highway,104,11,0,1
+India Bengaluru Corridors,Pedestrian,Urban Major Arterial,105,18,0,4
+India Bengaluru Corridors,Truck / Lorry,Elevated Expressway,101,32,0,13
+India Bengaluru Corridors,Truck / Lorry,Mixed Arterial,102,35,1,7
+India Bengaluru Corridors,Truck / Lorry,Semi-Urban Bottleneck,103,27,0,6
+India Bengaluru Corridors,Truck / Lorry,Two-Lane National Highway,104,51,3,8
+India Bengaluru Corridors,Truck / Lorry,Urban Major Arterial,105,36,1,8
+India Bengaluru Corridors,Two-Wheeler,Elevated Expressway,101,290,19,77
+India Bengaluru Corridors,Two-Wheeler,Mixed Arterial,102,258,18,73
+India Bengaluru Corridors,Two-Wheeler,Semi-Urban Bottleneck,103,264,15,62
+India Bengaluru Corridors,Two-Wheeler,Two-Lane National Highway,104,288,41,58
+India Bengaluru Corridors,Two-Wheeler,Urban Major Arterial,105,277,21,68

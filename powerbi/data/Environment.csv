@@ -1,0 +1,38 @@
+Study Context,Weather,Road Surface,Lighting Condition,Crashes,Fatal,Serious,Mean Severity Weight
+UK STATS19 Network,Fog or mist,Flood > 3cm,Darkness - no lights,1,0,1,10.0
+UK STATS19 Network,Raining (No high winds),Dry,Darkness - lights lit,1,0,1,10.0
+UK STATS19 Network,Fine (No high winds),Flood > 3cm,Darkness - no lights,7,1,4,13.14
+UK STATS19 Network,Fog or mist,Wet or damp,Darkness - no lights,22,3,6,10.14
+UK STATS19 Network,Fine (No high winds),Snow / Ice,Darkness - no lights,27,3,8,9.11
+UK STATS19 Network,Fine (No high winds),Flood > 3cm,Darkness - lights lit,18,0,7,4.5
+UK STATS19 Network,Raining (No high winds),Wet or damp,Darkness - no lights,234,24,67,8.6
+UK STATS19 Network,Fine (No high winds),Dry,Darkness - no lights,517,46,149,7.95
+UK STATS19 Network,Fine (No high winds),Wet or damp,Darkness - no lights,232,16,65,6.9
+UK STATS19 Network,Raining + high winds,Wet or damp,Darkness - no lights,38,5,8,9.34
+UK STATS19 Network,Fog or mist,Dry,Darkness - no lights,24,1,7,5.67
+UK STATS19 Network,Fog or mist,Wet or damp,Darkness - lights lit,33,1,10,5.21
+UK STATS19 Network,Fine (No high winds),Snow / Ice,Darkness - lights lit,68,1,20,4.37
+UK STATS19 Network,Snowing,Snow / Ice,Darkness - no lights,31,4,5,8.77
+UK STATS19 Network,Raining (No high winds),Dry,Daylight,7,0,2,3.57
+UK STATS19 Network,Fog or mist,Dry,Darkness - lights lit,57,3,12,5.47
+UK STATS19 Network,Fine (No high winds),Flood > 3cm,Daylight,105,5,22,5.22
+UK STATS19 Network,Fine (No high winds),Wet or damp,Darkness - lights lit,526,12,118,4.14
+UK STATS19 Network,Raining + high winds,Wet or damp,Darkness - lights lit,98,7,17,6.06
+UK STATS19 Network,Raining + high winds,Wet or damp,Daylight,724,23,154,4.47
+UK STATS19 Network,Fine (No high winds),Dry,Daylight,8409,287,1761,4.56
+UK STATS19 Network,Snowing,Snow / Ice,Daylight,350,8,77,4.1
+UK STATS19 Network,Fine (No high winds),Wet or damp,Daylight,3939,148,800,4.67
+UK STATS19 Network,Fine (No high winds),Snow / Ice,Daylight,525,21,104,4.74
+UK STATS19 Network,Raining (No high winds),Wet or damp,Daylight,3664,141,731,4.68
+UK STATS19 Network,Raining (No high winds),Wet or damp,Darkness - lights lit,479,19,95,4.73
+UK STATS19 Network,Fog or mist,Wet or damp,Daylight,208,4,45,3.89
+UK STATS19 Network,Fine (No high winds),Dry,Darkness - lights lit,1089,39,211,4.5
+UK STATS19 Network,Snowing,Snow / Ice,Darkness - lights lit,53,2,10,4.55
+UK STATS19 Network,Fog or mist,Dry,Daylight,468,12,89,3.97
+UK STATS19 Network,Fog or mist,Snow / Ice,Daylight,32,1,3,3.38
+UK STATS19 Network,Fog or mist,Flood > 3cm,Daylight,4,0,0,1.0
+UK STATS19 Network,Fog or mist,Snow / Ice,Darkness - lights lit,4,0,0,1.0
+UK STATS19 Network,Fog or mist,Snow / Ice,Darkness - no lights,1,0,0,1.0
+UK STATS19 Network,Raining + high winds,Dry,Daylight,3,0,0,1.0
+UK STATS19 Network,Snowing,Dry,Daylight,1,0,0,1.0
+UK STATS19 Network,Fog or mist,Flood > 3cm,Darkness - lights lit,1,0,0,1.0

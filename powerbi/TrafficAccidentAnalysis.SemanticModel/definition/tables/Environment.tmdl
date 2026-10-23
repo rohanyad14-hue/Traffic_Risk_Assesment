@@ -1,0 +1,81 @@
+table Environment
+	lineageTag: dcce3ccd-09c4-4b4b-82eb-ca6980304ad3
+
+	column 'Study Context'
+		dataType: string
+		lineageTag: 8caa9e30-044a-40db-9ea3-b4cd3dfbb88a
+		summarizeBy: none
+		sourceColumn: Study Context
+
+		annotation SummarizationSetBy = User
+
+	column Weather
+		dataType: string
+		lineageTag: 2d675fac-61ac-49ae-a075-e06abee01c06
+		summarizeBy: none
+		sourceColumn: Weather
+
+		annotation SummarizationSetBy = User
+
+	column 'Road Surface'
+		dataType: string
+		lineageTag: 04f9678a-075c-4250-9561-ea30a333c478
+		summarizeBy: none
+		sourceColumn: Road Surface
+
+		annotation SummarizationSetBy = User
+
+	column 'Lighting Condition'
+		dataType: string
+		lineageTag: 9cae9d94-766c-44d9-8f95-dc06390a64a0
+		summarizeBy: none
+		sourceColumn: Lighting Condition
+
+		annotation SummarizationSetBy = User
+
+	column Crashes
+		dataType: int64
+		formatString: #,0
+		lineageTag: 73c6b85a-2e6f-40be-b744-4524de53d321
+		summarizeBy: none
+		sourceColumn: Crashes
+
+		annotation SummarizationSetBy = User
+
+	column Fatal
+		dataType: int64
+		formatString: #,0
+		lineageTag: 67e5bfe7-d634-4a4b-a6f9-2b1506ee9517
+		summarizeBy: none
+		sourceColumn: Fatal
+
+		annotation SummarizationSetBy = User
+
+	column Serious
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9b59cf86-8ef6-4e75-8479-add157f54827
+		summarizeBy: none
+		sourceColumn: Serious
+
+		annotation SummarizationSetBy = User
+
+	column 'Mean Severity Weight'
+		dataType: double
+		lineageTag: 6f1c3523-be73-47ba-bf46-fea100259232
+		summarizeBy: none
+		sourceColumn: Mean Severity Weight
+
+		annotation SummarizationSetBy = User
+
+	partition Environment = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Environment.csv"),[Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Study Context", type text}, {"Weather", type text}, {"Road Surface", type text}, {"Lighting Condition", type text}, {"Crashes", Int64.Type}, {"Fatal", Int64.Type}, {"Serious", Int64.Type}, {"Mean Severity Weight", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

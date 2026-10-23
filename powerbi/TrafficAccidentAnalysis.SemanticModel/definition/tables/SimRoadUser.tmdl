@@ -1,0 +1,33 @@
+table SimRoadUser
+	lineageTag: 5a9d7562-f35b-4cc7-8b0f-75ffd81f26d5
+
+	column 'Road User'
+		dataType: string
+		lineageTag: 9d1a238d-f6b8-428b-8d63-ddb8a2c78a30
+		summarizeBy: none
+		sortByColumn: 'Road User Order'
+		sourceColumn: Road User
+
+		annotation SummarizationSetBy = User
+
+	column 'Road User Order'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: e55ae48e-cd38-4b42-9fa8-85f45dba8305
+		summarizeBy: none
+		sourceColumn: Road User Order
+
+		annotation SummarizationSetBy = User
+
+	partition SimRoadUser = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "SimRoadUser.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Road User", type text}, {"Road User Order", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

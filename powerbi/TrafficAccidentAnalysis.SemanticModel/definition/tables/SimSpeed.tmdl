@@ -1,0 +1,23 @@
+table SimSpeed
+	lineageTag: 6e78727c-95ea-4c19-8f80-42896c47e28a
+
+	column 'Speed Limit (mph)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5df19e74-88d0-4ba8-99e4-a24d826821a6
+		summarizeBy: none
+		sourceColumn: Speed Limit (mph)
+
+		annotation SummarizationSetBy = User
+
+	partition SimSpeed = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "SimSpeed.csv"),[Delimiter=",", Columns=1, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Speed Limit (mph)", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

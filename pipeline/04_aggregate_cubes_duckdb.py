@@ -25,6 +25,147 @@ PROCESSED_DIR = os.path.join(BASE_DIR, "data", "processed")
 CUBES_DIR = os.path.join(BASE_DIR, "data", "cubes")
 DB_PATH = os.path.join(BASE_DIR, "data", "traffic_analytics.duckdb")
 
+def build_india_context_cubes(conn):
+    """
+    Builds India (Bengaluru) cubes that mirror the UK cube schemas, so the dashboard's
+    'Study Context' switch can re-point every module at the India data.
+    Exports:
+        cube_india_segments_spatial.parquet   (same columns as cube_segments_spatial where available)
+        cube_india_temporal_heatmap.parquet   (Day x Hour)
+        cube_india_circadian_hourly.parquet   (24-hour profile)
+        cube_india_vehicle_vulnerability.parquet (Vehicle x Road class; India data has no speed limits)
+        cube_india_quadrants_summary.parquet  (4-quadrant summary)
+    The India feed carries no weather / surface / lighting fields, so there is no India environmental cube.
+    """
+    print("-> Building India Study-Context Cubes (segments, temporal, circadian, vehicle, quadrants)...")
+    segs_path = os.path.join(BASE_DIR, "data", "raw", "raw_india_segments.parquet").replace(os.sep, "/")
+    crashes_path = os.path.join(BASE_DIR, "data", "raw", "raw_india_crashes.parquet").replace(os.sep, "/")
+
+    conn.execute(f"""
+    CREATE OR REPLACE TEMP VIEW india_crashes AS
+    SELECT
+        c.*,
+        CASE c.day_of_week
+            WHEN 'Mon' THEN 'Monday' WHEN 'Tue' THEN 'Tuesday' WHEN 'Wed' THEN 'Wednesday'
+            WHEN 'Thu' THEN 'Thursday' WHEN 'Fri' THEN 'Friday' WHEN 'Sat' THEN 'Saturday'
+            ELSE 'Sunday' END AS day_name,
+        CASE c.day_of_week
+            WHEN 'Mon' THEN 0 WHEN 'Tue' THEN 1 WHEN 'Wed' THEN 2 WHEN 'Thu' THEN 3
+            WHEN 'Fri' THEN 4 WHEN 'Sat' THEN 5 ELSE 6 END AS dow_num,
+        CASE c.severity WHEN 'Fatal' THEN 50 WHEN 'Serious' THEN 10 ELSE 1 END AS severity_wt,
+        CASE WHEN c.primary_vehicle IN ('Two-Wheeler', 'Pedestrian') THEN 1 ELSE 0 END AS is_vulnerable_user
+    FROM read_parquet('{crashes_path}') c
+    """)
+
+    # Segment grain: exposure, risk, suppression, ranks and quadrants (same rules as Stage 4)
+    df_seg = conn.execute(f"""
+    SELECT
+        s.segment_id, s.road_name, s.road_class, s.length_km, s.aadt, s.two_wheeler_pct,
+        s.start_lat, s.start_lon, s.end_lat, s.end_lon,
+        COUNT(c.crash_id) AS crash_n,
+        COALESCE(SUM(c.severity_wt), 0) AS severity_wt_sum,
+        COALESCE(SUM(CASE WHEN c.severity = 'Fatal' THEN 1 ELSE 0 END), 0) AS fatal_count,
+        COALESCE(SUM(CASE WHEN c.severity = 'Serious' THEN 1 ELSE 0 END), 0) AS serious_count,
+        COALESCE(SUM(CASE WHEN c.severity = 'Slight' THEN 1 ELSE 0 END), 0) AS slight_count,
+        COALESCE(SUM(c.is_night), 0) AS night_crash_count,
+        COALESCE(SUM(c.is_vulnerable_user), 0) AS vulnerable_user_crash_count
+    FROM read_parquet('{segs_path}') s
+    LEFT JOIN india_crashes c ON s.segment_id = c.segment_id
+    GROUP BY ALL
+    ORDER BY s.segment_id
+    """).df()
+
+    df_seg["exposure_mvkm"] = (df_seg["aadt"] * df_seg["length_km"] * 365.0 / 1_000_000.0).round(2)
+    df_seg["risk_per_mvkm"] = np.where(
+        df_seg["exposure_mvkm"] > 0, df_seg["severity_wt_sum"] / df_seg["exposure_mvkm"], 0.0
+    ).round(2)
+    df_seg["is_suppressed"] = (df_seg["crash_n"] < 3) | (df_seg["exposure_mvkm"] < 0.20)
+    active = ~df_seg["is_suppressed"]
+    df_seg["rank_raw_count"] = df_seg["crash_n"].rank(ascending=False, method="min").astype(int)
+    df_seg["rank_exposure_risk"] = np.where(
+        active, df_seg["risk_per_mvkm"].rank(ascending=False, method="min").astype(int), 999
+    )
+    df_seg["rank_shift"] = df_seg["rank_raw_count"] - df_seg["rank_exposure_risk"]
+
+    med_c = df_seg.loc[active, "crash_n"].median()
+    med_r = df_seg.loc[active, "risk_per_mvkm"].median()
+
+    def classify(row):
+        if row["is_suppressed"]:
+            return "Suppressed (Low Sample Noise)"
+        hi_c, hi_r = row["crash_n"] >= med_c, row["risk_per_mvkm"] >= med_r
+        if hi_c and hi_r:
+            return "Q1: High Frequency - High Severity (Severe Congested)"
+        if hi_r:
+            return "Q2: Low Frequency - High Severity (Deadly Trap - Primary Focus)"
+        if not hi_c:
+            return "Q3: Low Frequency - Low Severity (Safe Segment)"
+        return "Q4: High Frequency - Low Severity (Fender-Benders)"
+
+    df_seg["quadrant"] = df_seg.apply(classify, axis=1)
+    df_seg.to_parquet(os.path.join(CUBES_DIR, "cube_india_segments_spatial.parquet"), index=False)
+
+    conn.register("india_segs_df", df_seg)
+    conn.execute("""
+    SELECT
+        quadrant,
+        COUNT(*) AS segment_count,
+        SUM(crash_n) AS total_crashes,
+        SUM(fatal_count) AS total_fatalities,
+        SUM(serious_count) AS total_serious_injuries,
+        ROUND(AVG(exposure_mvkm), 2) AS mean_exposure_mvkm,
+        ROUND(AVG(risk_per_mvkm), 2) AS mean_risk_per_mvkm,
+        ROUND(SUM(fatal_count) * 100.0 / NULLIF(SUM(crash_n), 0), 2) AS fatality_share_pct
+    FROM india_segs_df
+    GROUP BY quadrant
+    ORDER BY mean_risk_per_mvkm DESC
+    """).df().to_parquet(os.path.join(CUBES_DIR, "cube_india_quadrants_summary.parquet"), index=False)
+    conn.unregister("india_segs_df")
+
+    conn.execute("""
+    SELECT
+        day_name AS day_of_week, dow_num, hour,
+        COUNT(*) AS total_crashes,
+        SUM(CASE WHEN severity = 'Fatal' THEN 1 ELSE 0 END) AS fatal_crashes,
+        SUM(CASE WHEN severity = 'Serious' THEN 1 ELSE 0 END) AS serious_crashes,
+        SUM(CASE WHEN severity = 'Slight' THEN 1 ELSE 0 END) AS slight_crashes,
+        ROUND(AVG(severity_wt), 2) AS avg_severity_weight,
+        ROUND(SUM(CASE WHEN severity IN ('Fatal', 'Serious') THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS severe_rate_pct
+    FROM india_crashes
+    GROUP BY day_name, dow_num, hour
+    ORDER BY dow_num, hour
+    """).df().to_parquet(os.path.join(CUBES_DIR, "cube_india_temporal_heatmap.parquet"), index=False)
+
+    conn.execute("""
+    SELECT
+        hour,
+        COUNT(*) AS crash_count,
+        SUM(CASE WHEN severity = 'Fatal' THEN 1 ELSE 0 END) AS fatal_count,
+        SUM(CASE WHEN severity = 'Serious' THEN 1 ELSE 0 END) AS serious_count,
+        ROUND(AVG(severity_wt), 2) AS mean_severity_wt,
+        ROUND(SUM(CASE WHEN severity = 'Fatal' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS fatality_rate_pct,
+        ROUND(SUM(is_vulnerable_user) * 100.0 / COUNT(*), 2) AS vulnerable_pct
+    FROM india_crashes
+    GROUP BY hour
+    ORDER BY hour
+    """).df().to_parquet(os.path.join(CUBES_DIR, "cube_india_circadian_hourly.parquet"), index=False)
+
+    conn.execute(f"""
+    SELECT
+        c.primary_vehicle,
+        s.road_class,
+        COUNT(*) AS crash_count,
+        SUM(CASE WHEN c.severity = 'Fatal' THEN 1 ELSE 0 END) AS fatal_count,
+        SUM(CASE WHEN c.severity = 'Serious' THEN 1 ELSE 0 END) AS serious_count,
+        ROUND(SUM(CASE WHEN c.severity IN ('Fatal', 'Serious') THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS severe_rate_pct,
+        ROUND(AVG(c.severity_wt), 2) AS avg_severity_wt
+    FROM india_crashes c
+    JOIN read_parquet('{segs_path}') s ON s.segment_id = c.segment_id
+    GROUP BY c.primary_vehicle, s.road_class
+    ORDER BY c.primary_vehicle, s.road_class
+    """).df().to_parquet(os.path.join(CUBES_DIR, "cube_india_vehicle_vulnerability.parquet"), index=False)
+
+
 def run_stage_5_and_6():
     print("==================================================")
     print("STAGE 5 & 6: AGGREGATE CUBES VIA DUCKDB & ML")
@@ -211,6 +352,9 @@ def run_stage_5_and_6():
     """
     df_india = conn.execute(q_india).df()
     df_india.to_parquet(os.path.join(CUBES_DIR, "cube_india_transferability.parquet"), index=False)
+    
+    # 7b. India study-context cubes (same schema as the UK cubes so the dashboard can switch context)
+    build_india_context_cubes(conn)
     
     # 8. Train ML Hotspot & Severity Predictor (matching literature review on slide 4)
     print("-> Training ML Severity Risk Classifier (Random Forest / SHAP-Proxy)...")

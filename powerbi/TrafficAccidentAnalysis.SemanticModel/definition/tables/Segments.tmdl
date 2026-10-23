@@ -1,0 +1,267 @@
+table Segments
+	lineageTag: 4321b5d1-14ca-4d84-8b6c-747df0026aa3
+
+	column 'Study Context'
+		dataType: string
+		lineageTag: 0c38855a-a176-48a8-9ebb-afb2fa6b71ef
+		summarizeBy: none
+		sourceColumn: Study Context
+
+		annotation SummarizationSetBy = User
+
+	column 'Segment ID'
+		dataType: string
+		lineageTag: f8755c3a-b5b6-4ad9-8184-04985089644c
+		summarizeBy: none
+		sourceColumn: Segment ID
+
+		annotation SummarizationSetBy = User
+
+	column 'Road Name'
+		dataType: string
+		lineageTag: b5312af6-1e92-41be-b9da-57ae64d65ded
+		summarizeBy: none
+		sourceColumn: Road Name
+
+		annotation SummarizationSetBy = User
+
+	column 'Road Class'
+		dataType: string
+		lineageTag: befef4ba-4106-452d-84d5-3910979fa008
+		summarizeBy: none
+		sourceColumn: Road Class
+
+		annotation SummarizationSetBy = User
+
+	column 'Speed Limit (mph)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f07735d-5ee5-42ab-89df-98153eca3cf4
+		summarizeBy: none
+		sourceColumn: Speed Limit (mph)
+
+		annotation SummarizationSetBy = User
+
+	column 'Length km'
+		dataType: double
+		formatString: 0.000
+		lineageTag: 32d3e4f5-c7cc-4a52-aa25-64d91449ae92
+		summarizeBy: none
+		sourceColumn: Length km
+
+		annotation SummarizationSetBy = User
+
+	column AADT
+		dataType: int64
+		formatString: #,0
+		lineageTag: f7cbc583-52c2-458f-b111-df5586aa133c
+		summarizeBy: none
+		sourceColumn: AADT
+
+		annotation SummarizationSetBy = User
+
+	column 'Two-Wheeler Share'
+		dataType: double
+		formatString: 0%
+		lineageTag: a83f7094-8e0b-464f-9b5e-a021b03f60ab
+		summarizeBy: none
+		sourceColumn: Two-Wheeler Share
+
+		annotation SummarizationSetBy = User
+
+	column Lighting
+		dataType: string
+		lineageTag: 01dd4ccb-4dd7-47ee-9c2e-89b176e7e233
+		summarizeBy: none
+		sourceColumn: Lighting
+
+		annotation SummarizationSetBy = User
+
+	column 'Curvature Risk'
+		dataType: string
+		lineageTag: 1ede85ed-426d-4ce4-9996-0a495e11fac2
+		summarizeBy: none
+		sourceColumn: Curvature Risk
+
+		annotation SummarizationSetBy = User
+
+	column 'Mid Lat'
+		dataType: double
+		formatString: 0.0000
+		lineageTag: af858210-c3ec-4e41-b094-e3d62cf93125
+		summarizeBy: none
+		sourceColumn: Mid Lat
+
+		annotation SummarizationSetBy = User
+
+	column 'Mid Lon'
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 0223d43a-7b0b-4e3f-9e7f-129226b1642d
+		summarizeBy: none
+		sourceColumn: Mid Lon
+
+		annotation SummarizationSetBy = User
+
+	column Crashes
+		dataType: int64
+		formatString: #,0
+		lineageTag: f24c7b66-b1eb-4797-b39b-b64d4156b9b4
+		summarizeBy: none
+		sourceColumn: Crashes
+
+		annotation SummarizationSetBy = User
+
+	column 'Severity Weight Sum'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5e381755-07d2-405b-acf0-66e854badf75
+		summarizeBy: none
+		sourceColumn: Severity Weight Sum
+
+		annotation SummarizationSetBy = User
+
+	column Fatal
+		dataType: int64
+		formatString: #,0
+		lineageTag: 07815470-c9d9-439a-89e3-b2e07e10b723
+		summarizeBy: none
+		sourceColumn: Fatal
+
+		annotation SummarizationSetBy = User
+
+	column Serious
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3cd5aa0a-c009-4c7b-8236-dd50bca0f05d
+		summarizeBy: none
+		sourceColumn: Serious
+
+		annotation SummarizationSetBy = User
+
+	column Slight
+		dataType: int64
+		formatString: #,0
+		lineageTag: 64143166-be90-4ace-aaf6-6baa998570eb
+		summarizeBy: none
+		sourceColumn: Slight
+
+		annotation SummarizationSetBy = User
+
+	column 'Night Crashes'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 770c7d69-448e-4a82-b704-a1d0382ba465
+		summarizeBy: none
+		sourceColumn: Night Crashes
+
+		annotation SummarizationSetBy = User
+
+	column 'VRU Crashes'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 881e7f69-91ca-47b4-8661-31a7135d8039
+		summarizeBy: none
+		sourceColumn: VRU Crashes
+
+		annotation SummarizationSetBy = User
+
+	column 'Exposure MVKM'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: fb88bc0d-20b0-4753-aad8-95ebf7e15bd6
+		summarizeBy: none
+		sourceColumn: Exposure MVKM
+
+		annotation SummarizationSetBy = User
+
+	column 'Risk per MVKM'
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9e39c442-5bb7-4997-89cc-afe3f296e9bc
+		summarizeBy: none
+		sourceColumn: Risk per MVKM
+
+		annotation SummarizationSetBy = User
+
+	column Suppression
+		dataType: string
+		lineageTag: 44ea1319-db44-4cfe-9375-2a9d9dd82c9d
+		summarizeBy: none
+		sourceColumn: Suppression
+
+		annotation SummarizationSetBy = User
+
+	column 'Raw Count Rank'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4bedb2f0-a575-4b8c-b1b9-eb2ce6ad6b5b
+		summarizeBy: none
+		sourceColumn: Raw Count Rank
+
+		annotation SummarizationSetBy = User
+
+	column 'Exposure Risk Rank'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2f927302-947e-4b30-99ed-f5689012845d
+		summarizeBy: none
+		sourceColumn: Exposure Risk Rank
+
+		annotation SummarizationSetBy = User
+
+	column 'Rank Shift'
+		dataType: int64
+		formatString: +#,0;-#,0;0
+		lineageTag: 8b273087-62e9-4962-91c9-b1d5b504f28b
+		summarizeBy: none
+		sourceColumn: Rank Shift
+
+		annotation SummarizationSetBy = User
+
+	column Quadrant
+		dataType: string
+		lineageTag: e0af4ac6-f3a6-4f69-8baf-e91eacdb74e7
+		summarizeBy: none
+		sourceColumn: Quadrant
+
+		annotation SummarizationSetBy = User
+
+	column 'Is Benchmark'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: fbc3bd51-24fc-440f-951c-a61eda626858
+		summarizeBy: none
+		sourceColumn: Is Benchmark
+
+		annotation SummarizationSetBy = User
+
+	column 'Benchmark Role'
+		dataType: string
+		lineageTag: 6bf747ff-3e43-4bef-b9af-0c27b8a5f3f4
+		summarizeBy: none
+		sourceColumn: Benchmark Role
+
+		annotation SummarizationSetBy = User
+
+	column 'Map Y'
+		dataType: double
+		isHidden
+		lineageTag: 288d1d31-8b1e-4fee-9d70-542d167617cb
+		summarizeBy: none
+		sourceColumn: Map Y
+
+		annotation SummarizationSetBy = User
+
+	partition Segments = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Segments.csv"),[Delimiter=",", Columns=29, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Study Context", type text}, {"Segment ID", type text}, {"Road Name", type text}, {"Road Class", type text}, {"Speed Limit (mph)", Int64.Type}, {"Length km", type number}, {"AADT", Int64.Type}, {"Two-Wheeler Share", type number}, {"Lighting", type text}, {"Curvature Risk", type text}, {"Mid Lat", type number}, {"Mid Lon", type number}, {"Crashes", Int64.Type}, {"Severity Weight Sum", Int64.Type}, {"Fatal", Int64.Type}, {"Serious", Int64.Type}, {"Slight", Int64.Type}, {"Night Crashes", Int64.Type}, {"VRU Crashes", Int64.Type}, {"Exposure MVKM", type number}, {"Risk per MVKM", type number}, {"Suppression", type text}, {"Raw Count Rank", Int64.Type}, {"Exposure Risk Rank", Int64.Type}, {"Rank Shift", Int64.Type}, {"Quadrant", type text}, {"Is Benchmark", Int64.Type}, {"Benchmark Role", type text}, {"Map Y", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

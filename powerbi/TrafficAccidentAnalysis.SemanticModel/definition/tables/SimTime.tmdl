@@ -1,0 +1,33 @@
+table SimTime
+	lineageTag: 6010383a-d9f3-49f7-843c-fe2eb41e4472
+
+	column 'Time of Day'
+		dataType: string
+		lineageTag: 32c4e71a-bebc-4a9d-85c0-dce3d507c8dd
+		summarizeBy: none
+		sortByColumn: 'Time Order'
+		sourceColumn: Time of Day
+
+		annotation SummarizationSetBy = User
+
+	column 'Time Order'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: 33ca9240-5879-4592-9500-0183e834b7dc
+		summarizeBy: none
+		sourceColumn: Time Order
+
+		annotation SummarizationSetBy = User
+
+	partition SimTime = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "SimTime.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Time of Day", type text}, {"Time Order", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,76 @@
+table Vehicle
+	lineageTag: a4eebcb5-c036-463d-9f96-5332179bacf8
+
+	column 'Study Context'
+		dataType: string
+		lineageTag: 82f5b3fe-7d6a-4d41-b485-911403807941
+		summarizeBy: none
+		sourceColumn: Study Context
+
+		annotation SummarizationSetBy = User
+
+	column 'Vehicle Mode'
+		dataType: string
+		lineageTag: c1afb8c2-f6c4-461b-b697-525ed362703f
+		summarizeBy: none
+		sourceColumn: Vehicle Mode
+
+		annotation SummarizationSetBy = User
+
+	column 'Speed Limit or Corridor'
+		dataType: string
+		lineageTag: 1196926b-03a0-4235-98b1-6046f6ae8888
+		summarizeBy: none
+		sortByColumn: 'Group Order'
+		sourceColumn: Speed Limit or Corridor
+
+		annotation SummarizationSetBy = User
+
+	column 'Group Order'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: 3afd6cf0-186c-4b16-932e-442148c9bbab
+		summarizeBy: none
+		sourceColumn: Group Order
+
+		annotation SummarizationSetBy = User
+
+	column Crashes
+		dataType: int64
+		formatString: #,0
+		lineageTag: cc898070-32bd-4ff4-a9fc-f134f8d2eeb4
+		summarizeBy: none
+		sourceColumn: Crashes
+
+		annotation SummarizationSetBy = User
+
+	column Fatal
+		dataType: int64
+		formatString: #,0
+		lineageTag: b8bd9d36-118a-4878-b150-df534a6998b0
+		summarizeBy: none
+		sourceColumn: Fatal
+
+		annotation SummarizationSetBy = User
+
+	column Serious
+		dataType: int64
+		formatString: #,0
+		lineageTag: febddc8c-9802-47e3-bf7b-03fd638854ed
+		summarizeBy: none
+		sourceColumn: Serious
+
+		annotation SummarizationSetBy = User
+
+	partition Vehicle = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Vehicle.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Study Context", type text}, {"Vehicle Mode", type text}, {"Speed Limit or Corridor", type text}, {"Group Order", Int64.Type}, {"Crashes", Int64.Type}, {"Fatal", Int64.Type}, {"Serious", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

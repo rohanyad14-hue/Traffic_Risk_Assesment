@@ -1,0 +1,33 @@
+table SimLighting
+	lineageTag: 65804fb1-5919-40f0-9db3-0c7452580191
+
+	column 'Lighting Infrastructure'
+		dataType: string
+		lineageTag: b9329b29-0a70-40b8-a39b-040dec9d7191
+		summarizeBy: none
+		sortByColumn: 'Lighting Order'
+		sourceColumn: Lighting Infrastructure
+
+		annotation SummarizationSetBy = User
+
+	column 'Lighting Order'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: 171b1cfa-86ad-41d6-b0e6-4245cb2018d3
+		summarizeBy: none
+		sourceColumn: Lighting Order
+
+		annotation SummarizationSetBy = User
+
+	partition SimLighting = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "SimLighting.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Lighting Infrastructure", type text}, {"Lighting Order", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

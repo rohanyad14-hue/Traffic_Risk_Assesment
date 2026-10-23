@@ -1,0 +1,33 @@
+table StudyContext
+	lineageTag: 5cd3a61f-dc59-4968-a4ba-4fa0c092f4c2
+
+	column 'Study Context'
+		dataType: string
+		lineageTag: 709dc342-ecc0-4e85-82ec-03baf2fde043
+		summarizeBy: none
+		sortByColumn: 'Context Order'
+		sourceColumn: Study Context
+
+		annotation SummarizationSetBy = User
+
+	column 'Context Order'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: ecc84428-d4c7-4d02-975c-ede790510c19
+		summarizeBy: none
+		sourceColumn: Context Order
+
+		annotation SummarizationSetBy = User
+
+	partition StudyContext = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "StudyContext.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Study Context", type text}, {"Context Order", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

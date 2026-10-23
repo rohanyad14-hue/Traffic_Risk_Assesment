@@ -1,0 +1,31 @@
+table Features
+	lineageTag: cd36f3f6-00f4-4f46-ab78-b7b03600de2e
+
+	column Feature
+		dataType: string
+		lineageTag: 3360e3d0-7981-4b7e-86b4-2f2e9373102e
+		summarizeBy: none
+		sourceColumn: Feature
+
+		annotation SummarizationSetBy = User
+
+	column Importance
+		dataType: double
+		formatString: 0.0000
+		lineageTag: b334b58b-2e33-4c15-a4d3-c670bb2f6810
+		summarizeBy: none
+		sourceColumn: Importance
+
+		annotation SummarizationSetBy = User
+
+	partition Features = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Features.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers,{{"Feature", type text}, {"Importance", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
