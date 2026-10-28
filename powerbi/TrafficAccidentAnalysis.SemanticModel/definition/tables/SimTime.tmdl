@@ -1,9 +1,9 @@
 table SimTime
-	lineageTag: 6010383a-d9f3-49f7-843c-fe2eb41e4472
+	lineageTag: 7c4ead79-d63c-483f-ad8b-5d303a17fd24
 
 	column 'Time of Day'
 		dataType: string
-		lineageTag: 32c4e71a-bebc-4a9d-85c0-dce3d507c8dd
+		lineageTag: eb2aad9b-8364-4f5a-be11-836c5babc13a
 		summarizeBy: none
 		sortByColumn: 'Time Order'
 		sourceColumn: Time of Day
@@ -14,7 +14,7 @@ table SimTime
 		dataType: int64
 		isHidden
 		formatString: #,0
-		lineageTag: 33ca9240-5879-4592-9500-0183e834b7dc
+		lineageTag: 73c4a4a1-5762-4f5d-8ece-59ae6ef8020c
 		summarizeBy: none
 		sourceColumn: Time Order
 

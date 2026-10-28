@@ -1,9 +1,9 @@
 table Vehicle
-	lineageTag: a4eebcb5-c036-463d-9f96-5332179bacf8
+	lineageTag: 92498621-b039-4f39-92e9-211611aea15f
 
 	column 'Study Context'
 		dataType: string
-		lineageTag: 82f5b3fe-7d6a-4d41-b485-911403807941
+		lineageTag: 1f34bbb9-093e-412a-b330-1d1f5e51ac12
 		summarizeBy: none
 		sourceColumn: Study Context
 
@@ -11,7 +11,7 @@ table Vehicle
 
 	column 'Vehicle Mode'
 		dataType: string
-		lineageTag: c1afb8c2-f6c4-461b-b697-525ed362703f
+		lineageTag: 42211187-02ad-4f8f-9b10-e8f5e901ad98
 		summarizeBy: none
 		sourceColumn: Vehicle Mode
 
@@ -19,7 +19,7 @@ table Vehicle
 
 	column 'Speed Limit or Corridor'
 		dataType: string
-		lineageTag: 1196926b-03a0-4235-98b1-6046f6ae8888
+		lineageTag: b115df31-14de-40d2-9745-9d7a31e6590d
 		summarizeBy: none
 		sortByColumn: 'Group Order'
 		sourceColumn: Speed Limit or Corridor
@@ -30,7 +30,7 @@ table Vehicle
 		dataType: int64
 		isHidden
 		formatString: #,0
-		lineageTag: 3afd6cf0-186c-4b16-932e-442148c9bbab
+		lineageTag: d6625bdb-58ea-42c6-8f42-36e1be5ff560
 		summarizeBy: none
 		sourceColumn: Group Order
 
@@ -39,7 +39,7 @@ table Vehicle
 	column Crashes
 		dataType: int64
 		formatString: #,0
-		lineageTag: cc898070-32bd-4ff4-a9fc-f134f8d2eeb4
+		lineageTag: 1a60607a-809a-4c12-8107-35836f23e1b2
 		summarizeBy: none
 		sourceColumn: Crashes
 
@@ -48,7 +48,7 @@ table Vehicle
 	column Fatal
 		dataType: int64
 		formatString: #,0
-		lineageTag: b8bd9d36-118a-4878-b150-df534a6998b0
+		lineageTag: 4cc4825f-9a77-4ef0-ac1a-54a685e9b0bb
 		summarizeBy: none
 		sourceColumn: Fatal
 
@@ -57,7 +57,7 @@ table Vehicle
 	column Serious
 		dataType: int64
 		formatString: #,0
-		lineageTag: febddc8c-9802-47e3-bf7b-03fd638854ed
+		lineageTag: d5a5419f-777c-484b-82a1-f21651fe4f6a
 		summarizeBy: none
 		sourceColumn: Serious
 

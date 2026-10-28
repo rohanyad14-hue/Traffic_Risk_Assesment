@@ -1,67 +1,72 @@
 Study Context,Vehicle Mode,Speed Limit or Corridor,Group Order,Crashes,Fatal,Serious
-UK STATS19 Network,Bus / Coach,20 mph,20,54,0,10
-UK STATS19 Network,Bus / Coach,30 mph,30,169,3,27
-UK STATS19 Network,Bus / Coach,40 mph,40,9,2,1
-UK STATS19 Network,Bus / Coach,50 mph,50,228,6,35
-UK STATS19 Network,Bus / Coach,60 mph,60,2,0,0
-UK STATS19 Network,Bus / Coach,70 mph,70,441,19,93
-UK STATS19 Network,Car,20 mph,20,923,17,119
-UK STATS19 Network,Car,30 mph,30,2482,38,369
-UK STATS19 Network,Car,40 mph,40,94,2,10
-UK STATS19 Network,Car,50 mph,50,3363,57,510
-UK STATS19 Network,Car,60 mph,60,49,10,12
-UK STATS19 Network,Car,70 mph,70,6762,286,1434
-UK STATS19 Network,HGV / Heavy Truck,20 mph,20,75,3,9
-UK STATS19 Network,HGV / Heavy Truck,30 mph,30,182,1,24
-UK STATS19 Network,HGV / Heavy Truck,40 mph,40,5,1,0
-UK STATS19 Network,HGV / Heavy Truck,50 mph,50,281,6,51
-UK STATS19 Network,HGV / Heavy Truck,60 mph,60,2,0,0
-UK STATS19 Network,HGV / Heavy Truck,70 mph,70,559,20,131
-UK STATS19 Network,Motorcycle / Two-Wheeler,20 mph,20,221,13,70
-UK STATS19 Network,Motorcycle / Two-Wheeler,30 mph,30,619,27,186
-UK STATS19 Network,Motorcycle / Two-Wheeler,40 mph,40,24,2,8
-UK STATS19 Network,Motorcycle / Two-Wheeler,50 mph,50,910,47,280
-UK STATS19 Network,Motorcycle / Two-Wheeler,60 mph,60,9,3,5
-UK STATS19 Network,Motorcycle / Two-Wheeler,70 mph,70,1689,200,713
-UK STATS19 Network,Pedal Cycle,20 mph,20,43,1,4
-UK STATS19 Network,Pedal Cycle,30 mph,30,103,1,10
-UK STATS19 Network,Pedal Cycle,40 mph,40,4,0,0
-UK STATS19 Network,Pedal Cycle,50 mph,50,148,2,19
-UK STATS19 Network,Pedal Cycle,60 mph,60,2,0,0
-UK STATS19 Network,Pedal Cycle,70 mph,70,358,11,78
-UK STATS19 Network,Van / Light Goods,20 mph,20,156,3,22
-UK STATS19 Network,Van / Light Goods,30 mph,30,373,7,48
-UK STATS19 Network,Van / Light Goods,40 mph,40,17,0,2
-UK STATS19 Network,Van / Light Goods,50 mph,50,594,10,83
-UK STATS19 Network,Van / Light Goods,60 mph,60,3,0,1
-UK STATS19 Network,Van / Light Goods,70 mph,70,1047,39,245
-India Bengaluru Corridors,Auto-Rickshaw,Elevated Expressway,101,60,2,19
-India Bengaluru Corridors,Auto-Rickshaw,Mixed Arterial,102,64,0,18
-India Bengaluru Corridors,Auto-Rickshaw,Semi-Urban Bottleneck,103,62,1,13
-India Bengaluru Corridors,Auto-Rickshaw,Two-Lane National Highway,104,57,5,14
-India Bengaluru Corridors,Auto-Rickshaw,Urban Major Arterial,105,58,1,17
-India Bengaluru Corridors,Bus / BMTC,Elevated Expressway,101,25,0,9
-India Bengaluru Corridors,Bus / BMTC,Mixed Arterial,102,14,0,3
-India Bengaluru Corridors,Bus / BMTC,Semi-Urban Bottleneck,103,24,2,5
-India Bengaluru Corridors,Bus / BMTC,Two-Lane National Highway,104,30,3,12
-India Bengaluru Corridors,Bus / BMTC,Urban Major Arterial,105,24,1,7
-India Bengaluru Corridors,Car,Elevated Expressway,101,81,2,20
-India Bengaluru Corridors,Car,Mixed Arterial,102,97,1,15
-India Bengaluru Corridors,Car,Semi-Urban Bottleneck,103,95,2,27
-India Bengaluru Corridors,Car,Two-Lane National Highway,104,90,3,26
-India Bengaluru Corridors,Car,Urban Major Arterial,105,90,1,20
-India Bengaluru Corridors,Pedestrian,Elevated Expressway,101,15,2,2
-India Bengaluru Corridors,Pedestrian,Mixed Arterial,102,12,0,5
-India Bengaluru Corridors,Pedestrian,Semi-Urban Bottleneck,103,15,1,1
-India Bengaluru Corridors,Pedestrian,Two-Lane National Highway,104,11,0,1
-India Bengaluru Corridors,Pedestrian,Urban Major Arterial,105,18,0,4
-India Bengaluru Corridors,Truck / Lorry,Elevated Expressway,101,32,0,13
-India Bengaluru Corridors,Truck / Lorry,Mixed Arterial,102,35,1,7
-India Bengaluru Corridors,Truck / Lorry,Semi-Urban Bottleneck,103,27,0,6
-India Bengaluru Corridors,Truck / Lorry,Two-Lane National Highway,104,51,3,8
-India Bengaluru Corridors,Truck / Lorry,Urban Major Arterial,105,36,1,8
-India Bengaluru Corridors,Two-Wheeler,Elevated Expressway,101,290,19,77
-India Bengaluru Corridors,Two-Wheeler,Mixed Arterial,102,258,18,73
-India Bengaluru Corridors,Two-Wheeler,Semi-Urban Bottleneck,103,264,15,62
-India Bengaluru Corridors,Two-Wheeler,Two-Lane National Highway,104,288,41,58
-India Bengaluru Corridors,Two-Wheeler,Urban Major Arterial,105,277,21,68
+UK STATS19 Network,Bus / Coach,20 mph,20,690,6,131
+UK STATS19 Network,Bus / Coach,30 mph,30,1205,14,252
+UK STATS19 Network,Bus / Coach,40 mph,40,107,1,29
+UK STATS19 Network,Bus / Coach,50 mph,50,33,1,6
+UK STATS19 Network,Bus / Coach,60 mph,60,29,2,9
+UK STATS19 Network,Bus / Coach,70 mph,70,34,0,13
+UK STATS19 Network,Car,20 mph,20,5433,24,855
+UK STATS19 Network,Car,30 mph,30,20929,160,3667
+UK STATS19 Network,Car,40 mph,40,3848,51,682
+UK STATS19 Network,Car,50 mph,50,1806,43,330
+UK STATS19 Network,Car,60 mph,60,3135,72,733
+UK STATS19 Network,Car,70 mph,70,3032,75,530
+UK STATS19 Network,HGV / Heavy Truck,20 mph,20,74,2,12
+UK STATS19 Network,HGV / Heavy Truck,30 mph,30,437,15,63
+UK STATS19 Network,HGV / Heavy Truck,40 mph,40,198,2,33
+UK STATS19 Network,HGV / Heavy Truck,50 mph,50,165,4,26
+UK STATS19 Network,HGV / Heavy Truck,60 mph,60,201,18,45
+UK STATS19 Network,HGV / Heavy Truck,70 mph,70,790,46,145
+UK STATS19 Network,Motorcycle / Two-Wheeler,20 mph,20,3927,9,554
+UK STATS19 Network,Motorcycle / Two-Wheeler,30 mph,30,6054,66,1631
+UK STATS19 Network,Motorcycle / Two-Wheeler,40 mph,40,1000,19,375
+UK STATS19 Network,Motorcycle / Two-Wheeler,50 mph,50,446,21,205
+UK STATS19 Network,Motorcycle / Two-Wheeler,60 mph,60,770,38,400
+UK STATS19 Network,Motorcycle / Two-Wheeler,70 mph,70,340,17,140
+UK STATS19 Network,Pedal Cycle,20 mph,20,3772,6,834
+UK STATS19 Network,Pedal Cycle,30 mph,30,6403,21,1494
+UK STATS19 Network,Pedal Cycle,40 mph,40,557,9,157
+UK STATS19 Network,Pedal Cycle,50 mph,50,142,4,40
+UK STATS19 Network,Pedal Cycle,60 mph,60,269,14,118
+UK STATS19 Network,Pedal Cycle,70 mph,70,31,2,11
+UK STATS19 Network,Van / Light Goods,20 mph,20,451,4,71
+UK STATS19 Network,Van / Light Goods,30 mph,30,1430,18,289
+UK STATS19 Network,Van / Light Goods,40 mph,40,318,4,44
+UK STATS19 Network,Van / Light Goods,50 mph,50,162,6,25
+UK STATS19 Network,Van / Light Goods,60 mph,60,306,14,81
+UK STATS19 Network,Van / Light Goods,70 mph,70,375,4,63
+India Bengaluru Corridors,Auto-Rickshaw,Elevated Expressway,101,38,11,7
+India Bengaluru Corridors,Auto-Rickshaw,Industrial Arterial,102,17,4,6
+India Bengaluru Corridors,Auto-Rickshaw,Mixed Arterial,103,20,5,6
+India Bengaluru Corridors,Auto-Rickshaw,Semi-Urban Bottleneck,104,6,1,0
+India Bengaluru Corridors,Auto-Rickshaw,Two-Lane National Highway,105,40,7,10
+India Bengaluru Corridors,Auto-Rickshaw,Urban Major Arterial,106,4,1,0
+India Bengaluru Corridors,Bus / BMTC,Elevated Expressway,101,16,3,3
+India Bengaluru Corridors,Bus / BMTC,Industrial Arterial,102,5,1,2
+India Bengaluru Corridors,Bus / BMTC,Mixed Arterial,103,14,5,3
+India Bengaluru Corridors,Bus / BMTC,Semi-Urban Bottleneck,104,4,0,1
+India Bengaluru Corridors,Bus / BMTC,Two-Lane National Highway,105,12,4,2
+India Bengaluru Corridors,Bus / BMTC,Urban Major Arterial,106,2,1,1
+India Bengaluru Corridors,Car,Elevated Expressway,101,64,10,23
+India Bengaluru Corridors,Car,Industrial Arterial,102,25,5,5
+India Bengaluru Corridors,Car,Mixed Arterial,103,35,7,8
+India Bengaluru Corridors,Car,Semi-Urban Bottleneck,104,22,4,7
+India Bengaluru Corridors,Car,Two-Lane National Highway,105,53,7,20
+India Bengaluru Corridors,Car,Urban Major Arterial,106,17,4,3
+India Bengaluru Corridors,Pedestrian,Elevated Expressway,101,10,3,3
+India Bengaluru Corridors,Pedestrian,Industrial Arterial,102,5,2,0
+India Bengaluru Corridors,Pedestrian,Mixed Arterial,103,14,5,3
+India Bengaluru Corridors,Pedestrian,Two-Lane National Highway,105,10,2,3
+India Bengaluru Corridors,Pedestrian,Urban Major Arterial,106,4,0,2
+India Bengaluru Corridors,Truck / Lorry,Elevated Expressway,101,19,2,6
+India Bengaluru Corridors,Truck / Lorry,Industrial Arterial,102,8,3,2
+India Bengaluru Corridors,Truck / Lorry,Mixed Arterial,103,7,2,2
+India Bengaluru Corridors,Truck / Lorry,Semi-Urban Bottleneck,104,5,0,1
+India Bengaluru Corridors,Truck / Lorry,Two-Lane National Highway,105,17,4,5
+India Bengaluru Corridors,Truck / Lorry,Urban Major Arterial,106,4,0,1
+India Bengaluru Corridors,Two-Wheeler,Elevated Expressway,101,208,42,56
+India Bengaluru Corridors,Two-Wheeler,Industrial Arterial,102,77,11,23
+India Bengaluru Corridors,Two-Wheeler,Mixed Arterial,103,99,20,28
+India Bengaluru Corridors,Two-Wheeler,Semi-Urban Bottleneck,104,43,7,14
+India Bengaluru Corridors,Two-Wheeler,Two-Lane National Highway,105,169,27,47
+India Bengaluru Corridors,Two-Wheeler,Urban Major Arterial,106,49,8,16

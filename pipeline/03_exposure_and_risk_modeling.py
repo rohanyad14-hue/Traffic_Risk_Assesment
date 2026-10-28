@@ -131,14 +131,18 @@ def run_stage_4():
     print(f"SEG-1902 -> Crashes: {seg_1902['crash_n']} | Sev_Wt: {seg_1902['severity_wt_sum']} | Exposure: {seg_1902['exposure_mvkm']} MVKM | Risk: {seg_1902['risk_per_mvkm']} | Rank Count: #{seg_1902['rank_raw_count']} | Rank Risk: #{seg_1902['rank_exposure_risk']}")
     print("Result matches Slide 9: 'One-eighth the crashes. Twelve times the risk.'\n")
     
-    # Save to processed and DuckDB
+    # Save to processed (both Parquet and CSV) and DuckDB
     output_path = os.path.join(PROCESSED_DIR, "segment_exposure_risk.parquet")
+    output_csv_path = os.path.join(PROCESSED_DIR, "segment_exposure_risk.csv")
     df_segments_risk.to_parquet(output_path, index=False)
+    df_segments_risk.to_csv(output_csv_path, index=False)
     
     conn.execute(f"CREATE OR REPLACE TABLE segment_exposure_risk AS SELECT * FROM read_parquet('{output_path.replace(os.sep, '/')}')")
     conn.close()
     
-    print(f"-> Saved segment exposure risk table to {output_path}")
+    print(f"-> Saved segment exposure risk table to:")
+    print(f"   - {output_path}")
+    print(f"   - {output_csv_path}")
     print(" Stage 4 Exposure Risk Modeling Complete.")
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
 expression DataFolder = "C:\Users\Rohan\Downloads\TrafficAccidentAnalysis\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
-	lineageTag: dc4d7985-01f9-4e0e-8c5f-40d82b4bc0a7
+	lineageTag: a09db04f-3ae4-4330-873a-4be5f12646a5
 
 	annotation PBI_ResultType = Text

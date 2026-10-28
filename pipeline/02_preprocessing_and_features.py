@@ -94,10 +94,14 @@ def run_stage_2_and_3():
         how="left"
     )
     
-    # Save processed crash-level table
+    # Save processed crash-level table (both Parquet and CSV)
     processed_crash_path = os.path.join(PROCESSED_DIR, "processed_crashes.parquet")
+    processed_crash_csv_path = os.path.join(PROCESSED_DIR, "processed_crashes.csv")
     df_conformed.to_parquet(processed_crash_path, index=False)
-    print(f"-> Saved conformed crash-grain dataset with {df_conformed.shape[1]} features to {processed_crash_path}")
+    df_conformed.to_csv(processed_crash_csv_path, index=False)
+    print(f"-> Saved conformed crash-grain dataset with {df_conformed.shape[1]} features to:")
+    print(f"   - {processed_crash_path}")
+    print(f"   - {processed_crash_csv_path}")
     
     # Save into DuckDB
     conn.execute(f"CREATE OR REPLACE TABLE processed_crashes AS SELECT * FROM read_parquet('{processed_crash_path.replace(os.sep, '/')}')")

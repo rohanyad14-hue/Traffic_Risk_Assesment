@@ -1,9 +1,9 @@
 table Environment
-	lineageTag: dcce3ccd-09c4-4b4b-82eb-ca6980304ad3
+	lineageTag: f9cefa8c-16d6-4ec7-9ee0-429342410baf
 
 	column 'Study Context'
 		dataType: string
-		lineageTag: 8caa9e30-044a-40db-9ea3-b4cd3dfbb88a
+		lineageTag: 8e1f0336-b846-4715-ae44-61246f4cb488
 		summarizeBy: none
 		sourceColumn: Study Context
 
@@ -11,7 +11,7 @@ table Environment
 
 	column Weather
 		dataType: string
-		lineageTag: 2d675fac-61ac-49ae-a075-e06abee01c06
+		lineageTag: 85bd7400-5246-4768-b9ba-5f1d09381d11
 		summarizeBy: none
 		sourceColumn: Weather
 
@@ -19,7 +19,7 @@ table Environment
 
 	column 'Road Surface'
 		dataType: string
-		lineageTag: 04f9678a-075c-4250-9561-ea30a333c478
+		lineageTag: ec237167-0972-4e9a-8ae5-7d0ef8b4bc63
 		summarizeBy: none
 		sourceColumn: Road Surface
 
@@ -27,7 +27,7 @@ table Environment
 
 	column 'Lighting Condition'
 		dataType: string
-		lineageTag: 9cae9d94-766c-44d9-8f95-dc06390a64a0
+		lineageTag: 4a3daf02-fca3-4aa3-b56c-f78d5005668b
 		summarizeBy: none
 		sourceColumn: Lighting Condition
 
@@ -36,7 +36,7 @@ table Environment
 	column Crashes
 		dataType: int64
 		formatString: #,0
-		lineageTag: 73c6b85a-2e6f-40be-b744-4524de53d321
+		lineageTag: 9bb1f3cb-796e-470e-ab4a-0ce54751a70d
 		summarizeBy: none
 		sourceColumn: Crashes
 
@@ -45,7 +45,7 @@ table Environment
 	column Fatal
 		dataType: int64
 		formatString: #,0
-		lineageTag: 67e5bfe7-d634-4a4b-a6f9-2b1506ee9517
+		lineageTag: 4c63b24a-15ad-482a-bcb0-fc2930ddab78
 		summarizeBy: none
 		sourceColumn: Fatal
 
@@ -54,7 +54,7 @@ table Environment
 	column Serious
 		dataType: int64
 		formatString: #,0
-		lineageTag: 9b59cf86-8ef6-4e75-8479-add157f54827
+		lineageTag: 8f8e9988-df57-4b88-9115-d14d3ccd47c6
 		summarizeBy: none
 		sourceColumn: Serious
 
@@ -62,7 +62,7 @@ table Environment
 
 	column 'Mean Severity Weight'
 		dataType: double
-		lineageTag: 6f1c3523-be73-47ba-bf46-fea100259232
+		lineageTag: 9843f151-3b7b-445a-a192-b564196c8599
 		summarizeBy: none
 		sourceColumn: Mean Severity Weight
 

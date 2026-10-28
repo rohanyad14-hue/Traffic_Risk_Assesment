@@ -1,9 +1,9 @@
 table Hourly
-	lineageTag: 510a8a13-31a7-46ae-83fc-ac7b8bf4ef89
+	lineageTag: e4c5b380-e0a5-45dc-b82c-f5c95bf3a916
 
 	column 'Study Context'
 		dataType: string
-		lineageTag: f015c03a-a30d-4f2f-92a9-052f70298322
+		lineageTag: 5d7bf33b-1e0f-4eee-a47e-a32c7f81d1d3
 		summarizeBy: none
 		sourceColumn: Study Context
 
@@ -12,7 +12,7 @@ table Hourly
 	column Hour
 		dataType: int64
 		formatString: 0
-		lineageTag: 4f2c963a-1f99-4330-8535-51eac2c73411
+		lineageTag: b35fa208-0326-4412-937a-a2d9242f13d7
 		summarizeBy: none
 		sourceColumn: Hour
 
@@ -21,7 +21,7 @@ table Hourly
 	column Crashes
 		dataType: int64
 		formatString: #,0
-		lineageTag: 3e6c1293-35e6-4425-bd2e-675513a72eb9
+		lineageTag: 0e9188cc-020e-4174-a000-9974de28f2c0
 		summarizeBy: none
 		sourceColumn: Crashes
 
@@ -30,7 +30,7 @@ table Hourly
 	column Fatal
 		dataType: int64
 		formatString: #,0
-		lineageTag: e1ec1e3e-2f92-4fb3-a588-b3622bdf4bb0
+		lineageTag: 39cad690-e7cd-4738-ba11-7c0c88f1fe50
 		summarizeBy: none
 		sourceColumn: Fatal
 
@@ -39,7 +39,7 @@ table Hourly
 	column Serious
 		dataType: int64
 		formatString: #,0
-		lineageTag: 753b4077-7122-4135-b1d8-475d5c7c4eba
+		lineageTag: b95ddf6a-2fb7-4481-aa96-3104a17f439f
 		summarizeBy: none
 		sourceColumn: Serious
 
@@ -48,7 +48,7 @@ table Hourly
 	column 'VRU Crashes'
 		dataType: int64
 		formatString: #,0
-		lineageTag: 4803ea9c-744e-4918-af89-046fee3c2ecc
+		lineageTag: 17da92e3-5ca8-41b3-83fc-30b9c86f6650
 		summarizeBy: none
 		sourceColumn: VRU Crashes
 
@@ -56,7 +56,7 @@ table Hourly
 
 	column 'Mean Severity Weight'
 		dataType: double
-		lineageTag: 3780dbf3-ca0a-4c12-8253-b8b59ad06099
+		lineageTag: 85b9c386-feed-46b4-b153-4ebae7cdf94a
 		summarizeBy: none
 		sourceColumn: Mean Severity Weight
 

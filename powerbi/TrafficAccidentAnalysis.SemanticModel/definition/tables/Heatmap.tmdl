@@ -1,9 +1,9 @@
 table Heatmap
-	lineageTag: 19a8b1f6-83e7-43c7-9a50-2d6618b4f983
+	lineageTag: 3fb765af-7d0b-471d-b092-fe208de2a8c3
 
 	column 'Study Context'
 		dataType: string
-		lineageTag: 32431cdb-0a79-4724-a267-94d84935b4ee
+		lineageTag: 4609fc3b-828d-4ec4-bf36-312892dca17f
 		summarizeBy: none
 		sourceColumn: Study Context
 
@@ -11,7 +11,7 @@ table Heatmap
 
 	column Day
 		dataType: string
-		lineageTag: 4e9eba24-3b36-474b-8b22-52b45d53cf64
+		lineageTag: 01a56e84-6359-4c30-9e93-c2dd5643864d
 		summarizeBy: none
 		sortByColumn: 'Day Order'
 		sourceColumn: Day
@@ -22,7 +22,7 @@ table Heatmap
 		dataType: int64
 		isHidden
 		formatString: #,0
-		lineageTag: 23a9b5d8-6bc7-4e62-82b4-4dfbcfdbbd4c
+		lineageTag: abfea82f-30fa-4148-bbc8-9d69c56798ba
 		summarizeBy: none
 		sourceColumn: Day Order
 
@@ -31,7 +31,7 @@ table Heatmap
 	column Hour
 		dataType: int64
 		formatString: 0
-		lineageTag: 3520ab84-84f0-411e-a825-dbd99ebfd782
+		lineageTag: 29fe7c83-9d62-42fe-9439-73a29d01cff2
 		summarizeBy: none
 		sourceColumn: Hour
 
@@ -40,7 +40,7 @@ table Heatmap
 	column Crashes
 		dataType: int64
 		formatString: #,0
-		lineageTag: af9a15ef-fd22-495c-a30e-e2edd354df77
+		lineageTag: 3a570403-4a85-49e4-96da-9fc4a1ef1653
 		summarizeBy: none
 		sourceColumn: Crashes
 
@@ -49,7 +49,7 @@ table Heatmap
 	column Fatal
 		dataType: int64
 		formatString: #,0
-		lineageTag: fa51a6c2-541b-48b2-b596-7e6be1666ad0
+		lineageTag: ff7f88b2-616c-465d-b99f-f2bb398156eb
 		summarizeBy: none
 		sourceColumn: Fatal
 
@@ -58,7 +58,7 @@ table Heatmap
 	column Serious
 		dataType: int64
 		formatString: #,0
-		lineageTag: e96c2d1f-e735-40c1-b1bd-3f99485f48d7
+		lineageTag: d1cbd540-5d04-4950-9ce9-36a9d31f9480
 		summarizeBy: none
 		sourceColumn: Serious
 
@@ -67,7 +67,7 @@ table Heatmap
 	column Slight
 		dataType: int64
 		formatString: #,0
-		lineageTag: 3f921e20-e5c9-4704-978a-0e6973ecdc87
+		lineageTag: 43804bce-6efb-454b-b90a-abc41ca8bc2c
 		summarizeBy: none
 		sourceColumn: Slight
 
@@ -75,7 +75,7 @@ table Heatmap
 
 	column 'Avg Severity Weight'
 		dataType: double
-		lineageTag: 0d0c02d1-9df0-46b0-9a06-c196e4f0d8c9
+		lineageTag: a2b10915-c193-4596-aef6-1a0d8f44c4c3
 		summarizeBy: none
 		sourceColumn: Avg Severity Weight
 

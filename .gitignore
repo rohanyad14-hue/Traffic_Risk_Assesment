@@ -1,0 +1,77 @@
+# ==============================================================================
+# Traffic Accident Analysis & Severity Risk Modeling - .gitignore
+# ==============================================================================
+
+# --- Python & Bytecode ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Virtual Environments ---
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# --- IDEs, Editors & OS Files ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# --- Environment & Credentials ---
+.env
+.env.local
+*.env
+
+# --- Large Raw Datasets (Auto-downloaded via pipeline/download_real_data.py) ---
+# UK DfT STATS19 & AADF large CSV/ZIP downloads (>150MB)
+data/real_raw/dft_*.csv
+data/real_raw/dft_*.zip
+data/traffic_analytics_data.zip
+
+# Keep small BTP station seeds and gitkeep
+!data/real_raw/btp_*_station_wise.csv
+!data/real_raw/.gitkeep
+
+# --- DuckDB Database & Write-Ahead Logs ---
+*.duckdb
+*.duckdb.wal
+data/*.duckdb
+data/*.duckdb.wal
+
+# --- Pipeline Generated Raw Parquets ---
+# Dynamically rebuilt with `python run_pipeline.py`
+data/raw/*.parquet
+!data/raw/.gitkeep
+
+# --- Pipeline Processed Outputs ---
+data/processed/*.csv
+data/processed/*.parquet
+!data/processed/.gitkeep
+
+# --- Pre-aggregated Analytical Cubes & GeoJSON ---
+data/cubes/*.parquet
+data/cubes/*.geojson
+data/cubes/*.json
+!data/cubes/.gitkeep
+
+# --- Temporary Visualizations & Test Artifacts ---
+temp_html/
+test_capture_*.png
+*.tmp
+
+# --- Power BI Local Cache & User Settings ---
+powerbi/**/.pbi/localSettings.json
+powerbi/**/.pbi/cache.abf

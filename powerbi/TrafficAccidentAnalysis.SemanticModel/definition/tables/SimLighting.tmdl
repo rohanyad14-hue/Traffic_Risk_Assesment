@@ -1,9 +1,9 @@
 table SimLighting
-	lineageTag: 65804fb1-5919-40f0-9db3-0c7452580191
+	lineageTag: 348fb4ba-84a4-4137-b0de-8c1bbeaf2a6e
 
 	column 'Lighting Infrastructure'
 		dataType: string
-		lineageTag: b9329b29-0a70-40b8-a39b-040dec9d7191
+		lineageTag: 5aae5aa5-1342-43c2-bac4-0b7e51d96f66
 		summarizeBy: none
 		sortByColumn: 'Lighting Order'
 		sourceColumn: Lighting Infrastructure
@@ -14,7 +14,7 @@ table SimLighting
 		dataType: int64
 		isHidden
 		formatString: #,0
-		lineageTag: 171b1cfa-86ad-41d6-b0e6-4245cb2018d3
+		lineageTag: ecd51419-fc63-48de-a712-8dd67c876698
 		summarizeBy: none
 		sourceColumn: Lighting Order
 

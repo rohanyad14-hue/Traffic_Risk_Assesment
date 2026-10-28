@@ -1,9 +1,9 @@
 table Segments
-	lineageTag: 4321b5d1-14ca-4d84-8b6c-747df0026aa3
+	lineageTag: 90c97f41-b4eb-47b1-994a-d4c1e0f73455
 
 	column 'Study Context'
 		dataType: string
-		lineageTag: 0c38855a-a176-48a8-9ebb-afb2fa6b71ef
+		lineageTag: e2c30ce6-2b57-4a44-a685-6db59367f396
 		summarizeBy: none
 		sourceColumn: Study Context
 
@@ -11,7 +11,7 @@ table Segments
 
 	column 'Segment ID'
 		dataType: string
-		lineageTag: f8755c3a-b5b6-4ad9-8184-04985089644c
+		lineageTag: 5f508e9a-3e0b-4509-8e50-6a99054d491d
 		summarizeBy: none
 		sourceColumn: Segment ID
 
@@ -19,7 +19,7 @@ table Segments
 
 	column 'Road Name'
 		dataType: string
-		lineageTag: b5312af6-1e92-41be-b9da-57ae64d65ded
+		lineageTag: 780f0857-6e0d-4f42-9e93-4f90397c2ace
 		summarizeBy: none
 		sourceColumn: Road Name
 
@@ -27,7 +27,7 @@ table Segments
 
 	column 'Road Class'
 		dataType: string
-		lineageTag: befef4ba-4106-452d-84d5-3910979fa008
+		lineageTag: 27a29ae3-09c9-4786-b541-0ec9c021eee0
 		summarizeBy: none
 		sourceColumn: Road Class
 
@@ -36,7 +36,7 @@ table Segments
 	column 'Speed Limit (mph)'
 		dataType: int64
 		formatString: 0
-		lineageTag: 3f07735d-5ee5-42ab-89df-98153eca3cf4
+		lineageTag: c84a7fe3-19a0-4fe7-ba0d-ea4cc42b4ba5
 		summarizeBy: none
 		sourceColumn: Speed Limit (mph)
 
@@ -45,7 +45,7 @@ table Segments
 	column 'Length km'
 		dataType: double
 		formatString: 0.000
-		lineageTag: 32d3e4f5-c7cc-4a52-aa25-64d91449ae92
+		lineageTag: c6a0a1fd-0096-4242-9392-e7838cc2d2eb
 		summarizeBy: none
 		sourceColumn: Length km
 
@@ -54,7 +54,7 @@ table Segments
 	column AADT
 		dataType: int64
 		formatString: #,0
-		lineageTag: f7cbc583-52c2-458f-b111-df5586aa133c
+		lineageTag: 33f85c66-8ede-42a0-81b4-1d307368eeb7
 		summarizeBy: none
 		sourceColumn: AADT
 
@@ -63,7 +63,7 @@ table Segments
 	column 'Two-Wheeler Share'
 		dataType: double
 		formatString: 0%
-		lineageTag: a83f7094-8e0b-464f-9b5e-a021b03f60ab
+		lineageTag: 22df3180-801a-47de-80f9-33ec9fa59397
 		summarizeBy: none
 		sourceColumn: Two-Wheeler Share
 
@@ -71,7 +71,7 @@ table Segments
 
 	column Lighting
 		dataType: string
-		lineageTag: 01dd4ccb-4dd7-47ee-9c2e-89b176e7e233
+		lineageTag: a68b9853-63fc-4701-98d8-95ae096a7245
 		summarizeBy: none
 		sourceColumn: Lighting
 
@@ -79,7 +79,7 @@ table Segments
 
 	column 'Curvature Risk'
 		dataType: string
-		lineageTag: 1ede85ed-426d-4ce4-9996-0a495e11fac2
+		lineageTag: d070b307-a900-4547-9523-0313cf2e635a
 		summarizeBy: none
 		sourceColumn: Curvature Risk
 
@@ -88,7 +88,7 @@ table Segments
 	column 'Mid Lat'
 		dataType: double
 		formatString: 0.0000
-		lineageTag: af858210-c3ec-4e41-b094-e3d62cf93125
+		lineageTag: 6cc624a2-b4ec-43f4-8c5a-fd1177b53641
 		summarizeBy: none
 		sourceColumn: Mid Lat
 
@@ -97,7 +97,7 @@ table Segments
 	column 'Mid Lon'
 		dataType: double
 		formatString: 0.0000
-		lineageTag: 0223d43a-7b0b-4e3f-9e7f-129226b1642d
+		lineageTag: ea57c499-e15a-4565-9aa0-55b426144f16
 		summarizeBy: none
 		sourceColumn: Mid Lon
 
@@ -106,7 +106,7 @@ table Segments
 	column Crashes
 		dataType: int64
 		formatString: #,0
-		lineageTag: f24c7b66-b1eb-4797-b39b-b64d4156b9b4
+		lineageTag: 45443396-1102-46a3-a292-d00136b57995
 		summarizeBy: none
 		sourceColumn: Crashes
 
@@ -115,7 +115,7 @@ table Segments
 	column 'Severity Weight Sum'
 		dataType: int64
 		formatString: #,0
-		lineageTag: 5e381755-07d2-405b-acf0-66e854badf75
+		lineageTag: f148737f-fe21-41c2-a1b3-25c128a2e0f4
 		summarizeBy: none
 		sourceColumn: Severity Weight Sum
 
@@ -124,7 +124,7 @@ table Segments
 	column Fatal
 		dataType: int64
 		formatString: #,0
-		lineageTag: 07815470-c9d9-439a-89e3-b2e07e10b723
+		lineageTag: 77087a44-0672-4b35-a857-0cdd11394742
 		summarizeBy: none
 		sourceColumn: Fatal
 
@@ -133,7 +133,7 @@ table Segments
 	column Serious
 		dataType: int64
 		formatString: #,0
-		lineageTag: 3cd5aa0a-c009-4c7b-8236-dd50bca0f05d
+		lineageTag: 0eb093dd-2b34-446f-92d3-0058e2095b5d
 		summarizeBy: none
 		sourceColumn: Serious
 
@@ -142,7 +142,7 @@ table Segments
 	column Slight
 		dataType: int64
 		formatString: #,0
-		lineageTag: 64143166-be90-4ace-aaf6-6baa998570eb
+		lineageTag: daa92073-5831-4cf4-a2cb-3ff2504e328e
 		summarizeBy: none
 		sourceColumn: Slight
 
@@ -151,7 +151,7 @@ table Segments
 	column 'Night Crashes'
 		dataType: int64
 		formatString: #,0
-		lineageTag: 770c7d69-448e-4a82-b704-a1d0382ba465
+		lineageTag: 57805b61-25c1-49a3-9659-85de46ca66b3
 		summarizeBy: none
 		sourceColumn: Night Crashes
 
@@ -160,7 +160,7 @@ table Segments
 	column 'VRU Crashes'
 		dataType: int64
 		formatString: #,0
-		lineageTag: 881e7f69-91ca-47b4-8661-31a7135d8039
+		lineageTag: e48eed08-b6c5-4ad2-813d-d60c3c603e11
 		summarizeBy: none
 		sourceColumn: VRU Crashes
 
@@ -169,7 +169,7 @@ table Segments
 	column 'Exposure MVKM'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: fb88bc0d-20b0-4753-aad8-95ebf7e15bd6
+		lineageTag: e12b0f29-cb55-459e-9658-f3df67bd6a57
 		summarizeBy: none
 		sourceColumn: Exposure MVKM
 
@@ -178,7 +178,7 @@ table Segments
 	column 'Risk per MVKM'
 		dataType: double
 		formatString: 0.00
-		lineageTag: 9e39c442-5bb7-4997-89cc-afe3f296e9bc
+		lineageTag: 3ba4f7f0-696b-4b36-8ece-edf56c05ae0f
 		summarizeBy: none
 		sourceColumn: Risk per MVKM
 
@@ -186,7 +186,7 @@ table Segments
 
 	column Suppression
 		dataType: string
-		lineageTag: 44ea1319-db44-4cfe-9375-2a9d9dd82c9d
+		lineageTag: bd92d02e-8c7b-4329-830e-e7baff0cb669
 		summarizeBy: none
 		sourceColumn: Suppression
 
@@ -195,7 +195,7 @@ table Segments
 	column 'Raw Count Rank'
 		dataType: int64
 		formatString: #,0
-		lineageTag: 4bedb2f0-a575-4b8c-b1b9-eb2ce6ad6b5b
+		lineageTag: 38cd7ee2-856a-4938-aa44-c7e7b1a632a9
 		summarizeBy: none
 		sourceColumn: Raw Count Rank
 
@@ -204,7 +204,7 @@ table Segments
 	column 'Exposure Risk Rank'
 		dataType: int64
 		formatString: #,0
-		lineageTag: 2f927302-947e-4b30-99ed-f5689012845d
+		lineageTag: 5dfda417-08f8-4a79-9b6e-8628174fd47a
 		summarizeBy: none
 		sourceColumn: Exposure Risk Rank
 
@@ -213,7 +213,7 @@ table Segments
 	column 'Rank Shift'
 		dataType: int64
 		formatString: +#,0;-#,0;0
-		lineageTag: 8b273087-62e9-4962-91c9-b1d5b504f28b
+		lineageTag: 3d749064-3e41-4f0c-8f5f-0e8983fc34a3
 		summarizeBy: none
 		sourceColumn: Rank Shift
 
@@ -221,7 +221,7 @@ table Segments
 
 	column Quadrant
 		dataType: string
-		lineageTag: e0af4ac6-f3a6-4f69-8baf-e91eacdb74e7
+		lineageTag: cebc32b3-e3ca-4d9a-8226-55e38839caa6
 		summarizeBy: none
 		sourceColumn: Quadrant
 
@@ -231,7 +231,7 @@ table Segments
 		dataType: int64
 		isHidden
 		formatString: #,0
-		lineageTag: fbc3bd51-24fc-440f-951c-a61eda626858
+		lineageTag: 372a60e3-9396-4e8f-867f-0904320f9bf6
 		summarizeBy: none
 		sourceColumn: Is Benchmark
 
@@ -239,7 +239,7 @@ table Segments
 
 	column 'Benchmark Role'
 		dataType: string
-		lineageTag: 6bf747ff-3e43-4bef-b9af-0c27b8a5f3f4
+		lineageTag: c7027ba1-5eaa-4f84-8cc1-e7b61352678a
 		summarizeBy: none
 		sourceColumn: Benchmark Role
 
@@ -248,7 +248,7 @@ table Segments
 	column 'Map Y'
 		dataType: double
 		isHidden
-		lineageTag: 288d1d31-8b1e-4fee-9d70-542d167617cb
+		lineageTag: 1efdfc81-b503-4728-be5c-32e0bfd26912
 		summarizeBy: none
 		sourceColumn: Map Y
 

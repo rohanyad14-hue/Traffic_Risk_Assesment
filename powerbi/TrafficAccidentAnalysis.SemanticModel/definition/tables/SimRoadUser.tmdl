@@ -1,9 +1,9 @@
 table SimRoadUser
-	lineageTag: 5a9d7562-f35b-4cc7-8b0f-75ffd81f26d5
+	lineageTag: e72c8725-6287-44bc-8ba9-cef576ce327f
 
 	column 'Road User'
 		dataType: string
-		lineageTag: 9d1a238d-f6b8-428b-8d63-ddb8a2c78a30
+		lineageTag: c33911bb-e005-4d3a-9986-121b4ea64786
 		summarizeBy: none
 		sortByColumn: 'Road User Order'
 		sourceColumn: Road User
@@ -14,7 +14,7 @@ table SimRoadUser
 		dataType: int64
 		isHidden
 		formatString: #,0
-		lineageTag: e55ae48e-cd38-4b42-9fa8-85f45dba8305
+		lineageTag: b758a943-82a9-4400-99ce-d0ef67993995
 		summarizeBy: none
 		sourceColumn: Road User Order
 

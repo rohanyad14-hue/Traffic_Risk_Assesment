@@ -17,17 +17,37 @@ This prototype delivers an end-to-end, reproducible data pipeline and an interac
 
 ---
 
+## 🌐 Data Sources & Direct Download Links
+
+The pipeline operates on **100% empirical, official government datasets** from the UK Department for Transport (DfT) and Bengaluru Traffic Police (BTP), supplemented by Open-Meteo and OpenStreetMap:
+
+| Dataset | Provider / Source | Format & Coverage | Direct Link / Download |
+| :--- | :--- | :--- | :--- |
+| **UK Road Safety Collisions (2022)** | UK Department for Transport (DfT) | CSV (105k+ crash events across Great Britain) | 🔗 [Download Collisions 2022 CSV](https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2022.csv)<br>📄 [data.gov.uk Portal](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) |
+| **UK Road Safety Vehicles (2022)** | UK Department for Transport (DfT) | CSV (198k+ vehicle & casualty link records) | 🔗 [Download Vehicles 2022 CSV](https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-vehicle-2022.csv)<br>📄 [data.gov.uk Portal](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) |
+| **UK National Traffic Counts (AADF)** | UK DfT Road Traffic Statistics | ZIP / CSV (22,000+ national count points with AADT & segment lengths) | 🔗 [Download AADF ZIP Archive](https://storage.googleapis.com/dft-statistics/road-traffic/downloads/data-gov-uk/dft_traffic_counts_aadf.zip)<br>📄 [DfT Traffic Downloads Portal](https://roadtraffic.dft.gov.uk/downloads) |
+| **Bengaluru Traffic Police Crash Statistics** | Bengaluru Traffic Police (BTP) & Karnataka Open Data | CSV (Station-wise fatal & non-fatal collision records 2020–2024) | 🔗 [BTP Official Portal](https://btp.gov.in/)<br>📄 [Open City Karnataka Road Safety Portal](https://opencity.in/tag/bengaluru-traffic-police/) |
+| **Historical Weather Data** | Open-Meteo Archive API | Hourly REST / JSON (Precipitation, visibility, wind speed, surface temp) | 🔗 [Open-Meteo Weather API](https://open-meteo.com/en/docs/historical-weather-api) |
+| **Road Network Hierarchy & Geometry** | OpenStreetMap (OSM) / Ordnance Survey | Vector / GeoJSON (Classifications, lane counts, speed limits) | 🔗 [OSM Highway Standards](https://wiki.openstreetmap.org/wiki/Key:highway) |
+
+### Documentation & Guidance References
+- [UK DfT Road Safety Statistics Guidance & Methodology](https://www.gov.uk/government/collections/road-accidents-and-safety-statistics)
+- [UK DfT Traffic Counts Documentation & AADF Methodology](https://roadtraffic.dft.gov.uk/about)
+- [IRC & DfT Economic Valuation of Road Accidents / Valuation Ratios](https://www.gov.uk/government/publications/reported-road-casualties-great-britain-annual-report-2022/reported-road-casualties-great-britain-2022-overview)
+
+---
+
 ## 📐 Mathematical Formulation (Slide 8 & 9)
 
 ### 1. Annual Road Exposure ($E$)
 $$\text{exposure\_mvkm} = \frac{\text{AADT} \times \text{length\_km} \times 365}{1,000,000}$$
 Where:
-- $\text{AADT}$: Annual Average Daily Traffic (vehicles/day)
-- $\text{length\_km}$: Segment length in kilometers
+- $\text{AADT}$: Annual Average Daily Traffic (vehicles/day from DfT AADF counts)
+- $\text{length\_km}$: Segment link length in kilometers
 - $\text{exposure\_mvkm}$: Million Vehicle-Kilometers per year
 
 ### 2. Severity Weighting ($W$)
-Based on UK Department for Transport (DfT) / IRC economic injury ratios:
+Based on UK Department for Transport (DfT) / IRC economic injury valuation ratios:
 - $\text{Fatal} = 50$
 - $\text{Serious} = 10$
 - $\text{Slight} = 1$
@@ -38,7 +58,7 @@ $$\text{severity\_wt\_sum} = \sum_{i=1}^{N} w_i$$
 $$\text{risk\_per\_mvkm} = \frac{\text{severity\_wt\_sum}}{\text{exposure\_mvkm}}$$
 
 ### 4. Suppression Threshold
-Segments with $< 3$ crashes or $< 0.20$ MVKM exposure are withheld/flagged to avoid near-zero denominator statistical noise.
+Segments with $< 3$ crashes or $< 0.20$ MVKM exposure are withheld or flagged to prevent statistical noise from near-zero denominators.
 
 ---
 
@@ -69,20 +89,78 @@ Segments with $< 3$ crashes or $< 0.20$ MVKM exposure are withheld/flagged to av
 
 ---
 
-## 🚀 How to Run the Prototype
+## 📁 Repository Directory Structure
 
-### 1. Run the Data Pipeline (Batch Generation & Pre-aggregation)
-From the project folder:
+```text
+TrafficAccidentAnalysis/
+├── .gitignore                   # Ignores large raw CSV/ZIP files, DuckDB tables, and caches
+├── README.md                    # Project documentation & data catalog links
+├── requirements.txt             # Python dependencies (Streamlit, DuckDB, PyDeck, Plotly)
+├── run_pipeline.py              # Master pipeline orchestrator (CLI)
+├── app.py                       # Interactive Streamlit Visual Analytics Dashboard
+├── run.bat / run.sh             # One-click startup scripts (Windows / Linux)
+├── pipeline/
+│   ├── download_real_data.py    # Automated downloader for official UK DfT datasets
+│   ├── ingest_real_data.py      # Real DfT STATS19 & BTP ingestion & conformation
+│   ├── 01_data_generation_and_ingest.py  # Synthetic benchmark mode generator
+│   ├── 02_preprocessing_and_features.py  # Cleansing, circadian slots & severity weights
+│   ├── 03_exposure_and_risk_modeling.py  # Exposure calculation & 4-quadrant classification
+│   └── 04_aggregate_cubes_duckdb.py      # DuckDB analytical cube pre-aggregation
+├── data/
+│   ├── real_raw/                # Downloaded raw CSV/ZIP datasets (auto-populated or manual)
+│   │   ├── btp_*_station_wise.csv        # Bengaluru Traffic Police station crash stats
+│   │   ├── dft_collisions_2022.csv       # (Ignored from git, auto-downloaded)
+│   │   ├── dft_vehicles_2022.csv         # (Ignored from git, auto-downloaded)
+│   │   └── dft_traffic_counts_aadf.csv   # (Ignored from git, auto-downloaded)
+│   ├── raw/                     # Immutable conformed parquet tables
+│   ├── processed/               # Cleaned crash & segment tables with exposure metrics
+│   ├── cubes/                   # Pre-aggregated DuckDB parquet cubes & GeoJSON
+│   └── traffic_analytics.duckdb # DuckDB analytical database
+├── powerbi/                     # Power BI Desktop PBIP report project
+│   ├── TrafficAccidentAnalysis.pbip
+│   └── build_powerbi_report.py  # Power BI report generator
+├── report/                      # Presentation slides, talking points & technical reports
+└── report_figures/              # Publication figures and charts
+```
+
+---
+
+## 🚀 How to Run the Pipeline & Dashboard
+
+### 1. Installation & Environment Setup
+Ensure Python 3.10+ is installed:
+```powershell
+pip install -r requirements.txt
+```
+
+### 2. Download Data & Execute the Pipeline
+The pipeline features an automated downloader. On first run, it fetches the official UK DfT datasets if they are not already present in `data/real_raw/`:
 ```powershell
 python run_pipeline.py
 ```
-*Execution takes ~5 seconds and compiles all DuckDB tables, Parquet cubes, and GeoJSON features.*
+*(Execution takes ~6.2 seconds and compiles all DuckDB tables, Parquet cubes, and GeoJSON features.)*
 
-### 2. Launch the Interactive Dashboard
+To download datasets separately:
+```powershell
+python pipeline/download_real_data.py
+```
+
+To run in synthetic benchmark prototype mode:
+```powershell
+python run_pipeline.py --synthetic
+```
+
+### 3. Launch the Streamlit Analytics Dashboard
 ```powershell
 streamlit run app.py
 ```
-*Opens automatically at `http://localhost:8501`.*
+*Opens automatically in your browser at `http://localhost:8501`.*
+
+### 4. Open or Rebuild the Power BI Dashboard
+Open [`powerbi/TrafficAccidentAnalysis.pbip`](file:///c:/Users/Rohan/Downloads/TrafficAccidentAnalysis/powerbi/TrafficAccidentAnalysis.pbip) in Power BI Desktop, or rebuild via:
+```powershell
+python powerbi/build_powerbi_report.py
+```
 
 ---
 
@@ -109,3 +187,12 @@ streamlit run app.py
    - Highlighting 55%+ two-wheeler modal share and FASTag structural volume proxies.
 7. **⚙️ Pipeline Architecture & Review 1 Docs (Slide 6 & 10)**
    - Reproducible batch workflow explanation and CSV dataset export.
+
+---
+
+## 🔒 Version Control & Data Management (.gitignore)
+
+The repository uses `.gitignore` to keep large binary datasets and dynamic caches out of version control while maintaining full reproducibility:
+- **Ignored**: Large raw government files (`dft_*.csv`, `dft_*.zip`, ~190 MB), DuckDB binary stores (`*.duckdb`), pipeline cubes, and temporary HTML visualization dumps.
+- **Tracked**: Full Python pipeline scripts, Streamlit frontend, Power BI TMDL/PBIR models, benchmark seed files (`btp_*_station_wise.csv`), and `.gitkeep` markers for directory scaffolding.
+- Anyone cloning the repository can immediately reproduce all data cubes by running `python run_pipeline.py`.

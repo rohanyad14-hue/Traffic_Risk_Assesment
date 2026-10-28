@@ -1,9 +1,9 @@
 table StudyContext
-	lineageTag: 5cd3a61f-dc59-4968-a4ba-4fa0c092f4c2
+	lineageTag: ada76159-d276-4173-bea5-00ba744e4c83
 
 	column 'Study Context'
 		dataType: string
-		lineageTag: 709dc342-ecc0-4e85-82ec-03baf2fde043
+		lineageTag: f6d9ed2d-6672-4789-8d72-79d8b09ccb68
 		summarizeBy: none
 		sortByColumn: 'Context Order'
 		sourceColumn: Study Context
@@ -14,7 +14,7 @@ table StudyContext
 		dataType: int64
 		isHidden
 		formatString: #,0
-		lineageTag: ecc84428-d4c7-4d02-975c-ede790510c19
+		lineageTag: 735899a0-3174-410c-ba7b-49c67adda63f
 		summarizeBy: none
 		sourceColumn: Context Order
 

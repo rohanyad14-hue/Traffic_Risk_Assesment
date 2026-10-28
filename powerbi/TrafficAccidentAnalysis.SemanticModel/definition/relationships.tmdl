@@ -1,19 +1,19 @@
-relationship 874b6295-1d7f-494b-b8fa-47d4c2c6cbf6
+relationship ca6d268f-0fc7-471a-9cdb-1f22f12b6ff3
 	fromColumn: Segments.'Study Context'
 	toColumn: StudyContext.'Study Context'
 
-relationship 391192de-211e-4d6c-b69e-a5db5dec30fd
+relationship 636eabbf-ba55-4834-a1f6-a05639f6e741
 	fromColumn: Hourly.'Study Context'
 	toColumn: StudyContext.'Study Context'
 
-relationship 3b6fb618-4fb7-40dd-8466-4b650799377f
+relationship 002fdaeb-354a-4ef4-800e-6520c5371ff5
 	fromColumn: Heatmap.'Study Context'
 	toColumn: StudyContext.'Study Context'
 
-relationship d120d359-416b-42a9-a110-522c8cec6e02
+relationship c98acaad-3bd3-49e4-b179-35bb9b7bf023
 	fromColumn: Environment.'Study Context'
 	toColumn: StudyContext.'Study Context'
 
-relationship c0c0dd1e-83e6-45c3-bf69-82c33a35916d
+relationship 457cc58f-33a3-4bd5-b949-2669f1f249aa
 	fromColumn: Vehicle.'Study Context'
 	toColumn: StudyContext.'Study Context'

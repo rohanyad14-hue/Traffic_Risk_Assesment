@@ -1,9 +1,9 @@
 table Features
-	lineageTag: cd36f3f6-00f4-4f46-ab78-b7b03600de2e
+	lineageTag: 664c3183-1999-4bea-9f77-98ef1eae2a45
 
 	column Feature
 		dataType: string
-		lineageTag: 3360e3d0-7981-4b7e-86b4-2f2e9373102e
+		lineageTag: c997f684-992b-418f-be7f-3560c5d19bba
 		summarizeBy: none
 		sourceColumn: Feature
 
@@ -12,7 +12,7 @@ table Features
 	column Importance
 		dataType: double
 		formatString: 0.0000
-		lineageTag: b334b58b-2e33-4c15-a4d3-c670bb2f6810
+		lineageTag: 969087ca-6b37-4129-8110-2b86d43ac994
 		summarizeBy: none
 		sourceColumn: Importance
 

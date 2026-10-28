@@ -1,10 +1,10 @@
 table SimSpeed
-	lineageTag: 6e78727c-95ea-4c19-8f80-42896c47e28a
+	lineageTag: 9ed86691-f6d8-4dd9-941b-17dc2dafbffa
 
 	column 'Speed Limit (mph)'
 		dataType: int64
 		formatString: 0
-		lineageTag: 5df19e74-88d0-4ba8-99e4-a24d826821a6
+		lineageTag: 8d8adf45-ad3b-4db1-8aa4-bf47918db7ad
 		summarizeBy: none
 		sourceColumn: Speed Limit (mph)
 
